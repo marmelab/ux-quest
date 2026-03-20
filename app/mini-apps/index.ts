@@ -1,9 +1,9 @@
 import type { MiniAppDefinition } from "~/lib/types"
-import { fontMismatchCard } from "./font-mismatch-card"
+import { editableProfile } from "./editable-profile"
 import { productTable } from "./product-table"
 
 export const miniApps: MiniAppDefinition[] = [
-  fontMismatchCard,
+  editableProfile,
   productTable,
   // Add new mini-app definitions here
 ]

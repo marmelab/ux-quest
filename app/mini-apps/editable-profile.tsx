@@ -17,7 +17,7 @@ const initialUser: UserData = {
   location: "San Francisco, CA",
 }
 
-function FontMismatchCard() {
+function EditableProfile() {
   const [user, setUser] = useState<UserData>(initialUser)
   const [editing, setEditing] = useState<keyof UserData | null>(null)
   const [draft, setDraft] = useState("")
@@ -177,13 +177,13 @@ function FontMismatchCard() {
   )
 }
 
-export const fontMismatchCard: MiniAppDefinition = {
-  id: "font-mismatch-card",
+export const editableProfile: MiniAppDefinition = {
+  id: "editable-profile",
   name: "User Profile Card",
   introduction: "A user profile card that users can edit in place.",
   category: "forms",
   difficulty: "medium",
-  component: FontMismatchCard,
+  component: EditableProfile,
   expectedAnswers: [
     "The font changes when editing a field. The input uses a different font than the display text.",
     "The edit input has a different font family than the static text, causing a visual jump.",
