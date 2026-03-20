@@ -8,6 +8,7 @@ export type Category =
   | "layout"
   | "interaction"
   | "lists"
+  | "dataviz"
 
 export type Difficulty = "easy" | "medium" | "hard"
 
