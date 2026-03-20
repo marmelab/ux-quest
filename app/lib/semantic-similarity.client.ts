@@ -1,45 +1,64 @@
-import type { FeatureExtractionPipeline } from "@huggingface/transformers"
-
 export const SIMILARITY_THRESHOLD = 0.65
 /** Minimum gap between best-right and best-wrong scores for contrastive check */
 export const CONTRASTIVE_MARGIN = 0.1
 
-let extractor: FeatureExtractionPipeline | null = null
+const CROSS_ENCODER_MODEL = "Xenova/ms-marco-MiniLM-L-6-v2"
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let tokenizer: any = null
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let model: any = null
 let loadingPromise: Promise<void> | null = null
 
 export async function loadModel(): Promise<void> {
-  if (extractor) return
+  if (model) return
   if (loadingPromise) return loadingPromise
 
   loadingPromise = (async () => {
-    const transformers = await import("@huggingface/transformers")
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const result = await (transformers.pipeline as any)(
-      "feature-extraction",
-      "Xenova/all-MiniLM-L6-v2",
-      { dtype: "q8" },
+    const { AutoTokenizer, AutoModelForSequenceClassification } = await import(
+      "@huggingface/transformers"
     )
-    extractor = result as FeatureExtractionPipeline
+    ;[tokenizer, model] = await Promise.all([
+      AutoTokenizer.from_pretrained(CROSS_ENCODER_MODEL),
+      AutoModelForSequenceClassification.from_pretrained(CROSS_ENCODER_MODEL, {
+        dtype: "q8",
+      }),
+    ])
   })()
 
   return loadingPromise
+}
+
+/**
+ * Score a pair of texts using the cross-encoder.
+ * Returns a relevance score (higher = more similar in meaning).
+ */
+async function scorePair(text1: string, text2: string): Promise<number> {
+  const inputs = tokenizer(text1, {
+    text_pair: text2,
+    padding: true,
+    truncation: true,
+    return_tensor: true,
+  })
+  const output = await model(inputs)
+  // Cross-encoder outputs logits; single score for relevance
+  return output.logits.data[0] as number
+}
+
+/**
+ * Normalize a raw cross-encoder logit to 0–1 range using sigmoid.
+ */
+function sigmoid(x: number): number {
+  return 1 / (1 + Math.exp(-x))
 }
 
 export async function computeSimilarity(
   text1: string,
   text2: string,
 ): Promise<number> {
-  if (!extractor) await loadModel()
-
-  const [emb1, emb2] = await Promise.all([
-    extractor!(text1, { pooling: "mean", normalize: true }),
-    extractor!(text2, { pooling: "mean", normalize: true }),
-  ])
-
-  const a = Array.from(emb1.data as Float32Array)
-  const b = Array.from(emb2.data as Float32Array)
-
-  return cosineSimilarity(a, b)
+  if (!model) await loadModel()
+  const raw = await scorePair(text1, text2)
+  return sigmoid(raw)
 }
 
 /**
@@ -49,19 +68,14 @@ export async function computeBestSimilarity(
   userAnswer: string,
   expectedAnswers: string[],
 ): Promise<number> {
-  if (!extractor) await loadModel()
+  if (!model) await loadModel()
 
-  const userEmb = await extractor!(userAnswer, { pooling: "mean", normalize: true })
-  const userVec = Array.from(userEmb.data as Float32Array)
-
-  let best = 0
+  let best = -Infinity
   for (const expected of expectedAnswers) {
-    const expEmb = await extractor!(expected, { pooling: "mean", normalize: true })
-    const expVec = Array.from(expEmb.data as Float32Array)
-    const score = cosineSimilarity(userVec, expVec)
+    const score = await scorePair(userAnswer, expected)
     if (score > best) best = score
   }
-  return best
+  return sigmoid(best)
 }
 
 /**
@@ -73,46 +87,30 @@ export async function computeContrastiveSimilarity(
   expectedAnswers: string[],
   wrongAnswers: string[],
 ): Promise<number> {
-  if (!extractor) await loadModel()
+  if (!model) await loadModel()
 
-  const userEmb = await extractor!(userAnswer, {
-    pooling: "mean",
-    normalize: true,
-  })
-  const userVec = Array.from(userEmb.data as Float32Array)
-
-  let bestRight = 0
+  let bestRight = -Infinity
   for (const expected of expectedAnswers) {
-    const emb = await extractor!(expected, { pooling: "mean", normalize: true })
-    const vec = Array.from(emb.data as Float32Array)
-    const score = cosineSimilarity(userVec, vec)
+    const score = await scorePair(userAnswer, expected)
     if (score > bestRight) bestRight = score
   }
 
-  let bestWrong = 0
+  let bestWrong = -Infinity
   for (const wrong of wrongAnswers) {
-    const emb = await extractor!(wrong, { pooling: "mean", normalize: true })
-    const vec = Array.from(emb.data as Float32Array)
-    const score = cosineSimilarity(userVec, vec)
+    const score = await scorePair(userAnswer, wrong)
     if (score > bestWrong) bestWrong = score
   }
 
+  const normRight = sigmoid(bestRight)
+  const normWrong = sigmoid(bestWrong)
+
   // If the answer is closer to a wrong example (within margin), reject it
-  if (bestRight - bestWrong < CONTRASTIVE_MARGIN) {
-    return bestRight * (0.5 + 0.5 * (bestRight - bestWrong) / CONTRASTIVE_MARGIN)
+  if (normRight - normWrong < CONTRASTIVE_MARGIN) {
+    return (
+      normRight *
+      (0.5 + (0.5 * (normRight - normWrong)) / CONTRASTIVE_MARGIN)
+    )
   }
 
-  return bestRight
-}
-
-function cosineSimilarity(a: number[], b: number[]): number {
-  let dot = 0
-  let normA = 0
-  let normB = 0
-  for (let i = 0; i < a.length; i++) {
-    dot += a[i] * b[i]
-    normA += a[i] * a[i]
-    normB += b[i] * b[i]
-  }
-  return dot / (Math.sqrt(normA) * Math.sqrt(normB))
+  return normRight
 }

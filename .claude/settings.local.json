@@ -6,7 +6,8 @@
       "Bash(npm run:*)",
       "mcp__Claude_Preview__preview_start",
       "Bash(grep -v \"^\\\\.\\\\.$\")",
-      "Bash(xargs -I {} basename {})"
+      "Bash(xargs -I {} basename {})",
+      "Bash(find /Users/francois/git/charlux -type f \\\\\\(-name *.test.ts -o -name *.spec.ts -o -name *.example.ts \\\\\\))"
     ]
   }
 }
