@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Button } from "~/components/ui/button"
 import { Textarea } from "~/components/ui/textarea"
 import type { AttemptResult } from "~/lib/types"
@@ -19,7 +19,14 @@ export function AnswerInput({
   lastAttempt,
 }: AnswerInputProps) {
   const [text, setText] = useState("")
+  const textareaRef = useRef<HTMLTextAreaElement>(null)
   const remaining = maxAttempts - attemptsUsed
+
+  useEffect(() => {
+    if (lastAttempt && !lastAttempt.correct) {
+      textareaRef.current?.focus()
+    }
+  }, [lastAttempt])
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -51,8 +58,15 @@ export function AnswerInput({
         </span>
       </label>
       <Textarea
+        ref={textareaRef}
         value={text}
         onChange={(e) => setText(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" && !e.shiftKey) {
+            e.preventDefault()
+            handleSubmit(e)
+          }
+        }}
         placeholder="Describe the UX problem you detected..."
         disabled={isSubmitting}
       />
