@@ -60,7 +60,7 @@ function FontMismatchCard() {
     <div className="mx-auto max-w-md text-sm">
       {/* Header */}
       <div className="flex items-center gap-3 border-b pb-3">
-        <div className="bg-primary text-primary-foreground flex size-10 shrink-0 items-center justify-center rounded-full text-sm font-semibold">
+        <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">
           {user.name
             .split(" ")
             .map((n) => n[0])
@@ -83,9 +83,7 @@ function FontMismatchCard() {
             onClick={() => editing !== key && startEditing(key)}
           >
             <div className="flex flex-1 flex-col gap-0.5">
-              <span className="text-muted-foreground text-xs">
-                {label}
-              </span>
+              <span className="text-xs text-muted-foreground">{label}</span>
               {editing === key ? (
                 <input
                   type="text"
@@ -102,7 +100,7 @@ function FontMismatchCard() {
               )}
             </div>
             {editing !== key && (
-              <span className="text-muted-foreground text-xs opacity-0 group-hover:opacity-100">
+              <span className="text-xs text-muted-foreground opacity-0 group-hover:opacity-100">
                 Edit
               </span>
             )}
@@ -112,12 +110,10 @@ function FontMismatchCard() {
 
       {/* Footer */}
       <div className="mt-3 flex items-center justify-between border-t pt-3">
-        <span className="text-muted-foreground text-xs">
+        <span className="text-xs text-muted-foreground">
           Member since Jan 2024
         </span>
-        {saved && (
-          <span className="text-xs text-green-600">Changes saved</span>
-        )}
+        {saved && <span className="text-xs text-green-600">Changes saved</span>}
       </div>
     </div>
   )
@@ -138,5 +134,14 @@ export const fontMismatchCard: MiniAppDefinition = {
     "The text appearance changes when switching to edit mode — the font looks different.",
     "The font size or style changes when you click to edit a field.",
     "The input text looks different from the display text when editing in place.",
+    "The layout shifts when switching to edit mode.",
+  ],
+  wrongAnswers: [
+    "The mouse cursor doesn't change to indicate the text is editable.",
+    "There is no visual indicator that fields are clickable.",
+    "The save button is missing or hard to find.",
+    "The text is too small to read.",
+    "The color contrast is too low for accessibility.",
+    "There is no confirmation before saving changes.",
   ],
 }

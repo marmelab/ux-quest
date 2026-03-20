@@ -18,6 +18,8 @@ export interface MiniAppDefinition {
   component: ComponentType
   /** Accepted answer phrasings — user answer is compared to each, best match wins */
   expectedAnswers: string[]
+  /** Plausible-but-wrong answers — used to reject topically similar but incorrect responses */
+  wrongAnswers?: string[]
 }
 
 export interface AttemptResult {

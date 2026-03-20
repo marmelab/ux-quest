@@ -1,6 +1,8 @@
 import type { FeatureExtractionPipeline } from "@huggingface/transformers"
 
 export const SIMILARITY_THRESHOLD = 0.65
+/** Minimum gap between best-right and best-wrong scores for contrastive check */
+export const CONTRASTIVE_MARGIN = 0.1
 
 let extractor: FeatureExtractionPipeline | null = null
 let loadingPromise: Promise<void> | null = null
@@ -60,6 +62,47 @@ export async function computeBestSimilarity(
     if (score > best) best = score
   }
   return best
+}
+
+/**
+ * Contrastive scoring: compare user answer against both correct and wrong answers.
+ * Returns an adjusted score that penalizes answers closer to wrong examples.
+ */
+export async function computeContrastiveSimilarity(
+  userAnswer: string,
+  expectedAnswers: string[],
+  wrongAnswers: string[],
+): Promise<number> {
+  if (!extractor) await loadModel()
+
+  const userEmb = await extractor!(userAnswer, {
+    pooling: "mean",
+    normalize: true,
+  })
+  const userVec = Array.from(userEmb.data as Float32Array)
+
+  let bestRight = 0
+  for (const expected of expectedAnswers) {
+    const emb = await extractor!(expected, { pooling: "mean", normalize: true })
+    const vec = Array.from(emb.data as Float32Array)
+    const score = cosineSimilarity(userVec, vec)
+    if (score > bestRight) bestRight = score
+  }
+
+  let bestWrong = 0
+  for (const wrong of wrongAnswers) {
+    const emb = await extractor!(wrong, { pooling: "mean", normalize: true })
+    const vec = Array.from(emb.data as Float32Array)
+    const score = cosineSimilarity(userVec, vec)
+    if (score > bestWrong) bestWrong = score
+  }
+
+  // If the answer is closer to a wrong example (within margin), reject it
+  if (bestRight - bestWrong < CONTRASTIVE_MARGIN) {
+    return bestRight * (0.5 + 0.5 * (bestRight - bestWrong) / CONTRASTIVE_MARGIN)
+  }
+
+  return bestRight
 }
 
 function cosineSimilarity(a: number[], b: number[]): number {

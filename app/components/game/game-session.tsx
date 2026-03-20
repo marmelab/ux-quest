@@ -22,7 +22,11 @@ export function GameSession() {
       const currentMiniApp = state.selectedMiniApps[state.currentIndex]
       setIsSubmitting(true)
       try {
-        const similarity = await compare(text, currentMiniApp.expectedAnswers)
+        const similarity = await compare(
+          text,
+          currentMiniApp.expectedAnswers,
+          currentMiniApp.wrongAnswers,
+        )
         submitAnswer({
           text,
           similarity,
