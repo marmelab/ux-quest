@@ -1,21 +1,7 @@
-# React Router + shadcn/ui
+# Where Is CharlUX?
 
-This is a template for a new React Router project with React, TypeScript, and shadcn/ui.
+Charlux is a UX problem detection training game. Users examine mini-applications, identify the deliberate UX flaw in each, and describe it in text. An in-browser ML model (transformers.js) scores answers via semantic similarity.
 
-## Adding components
+## License
 
-To add components to your app, run the following command:
-
-```bash
-npx shadcn@latest add button
-```
-
-This will place the ui components in the `components` directory.
-
-## Using components
-
-To use the components in your app, import them as follows:
-
-```tsx
-import { Button } from "@/components/ui/button";
-```
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
