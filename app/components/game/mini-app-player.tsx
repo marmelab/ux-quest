@@ -17,12 +17,15 @@ export function MiniAppPlayer({ miniApp, disabled }: MiniAppPlayerProps) {
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="flex items-center gap-2">
-        <h2 className="text-lg font-medium">{miniApp.name}</h2>
-        <Badge variant="outline">{miniApp.category}</Badge>
-        <Badge variant={difficultyVariant[miniApp.difficulty]}>
-          {miniApp.difficulty}
-        </Badge>
+      <div className="flex flex-col gap-1">
+        <div className="flex items-center gap-2">
+          <h2 className="text-lg font-medium">{miniApp.name}</h2>
+          <Badge variant="outline">{miniApp.category}</Badge>
+          <Badge variant={difficultyVariant[miniApp.difficulty]}>
+            {miniApp.difficulty}
+          </Badge>
+        </div>
+        <p className="text-sm text-muted-foreground">{miniApp.introduction}</p>
       </div>
       <div
         className={`border-border rounded-lg border p-4 ${disabled ? "pointer-events-none opacity-50" : ""}`}

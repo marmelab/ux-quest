@@ -13,6 +13,8 @@ export type Difficulty = "easy" | "medium" | "hard"
 export interface MiniAppDefinition {
   id: string
   name: string
+  /** Short introduction displayed to the user explaining what the mini-app is about */
+  introduction: string
   category: Category
   difficulty: Difficulty
   component: ComponentType

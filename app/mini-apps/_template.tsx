@@ -21,6 +21,7 @@ function TemplateMiniApp() {
 export const templateMiniApp: MiniAppDefinition = {
   id: "template",
   name: "Template",
+  introduction: "Describe what this mini-app is about.",
   category: "interaction",
   difficulty: "easy",
   component: TemplateMiniApp,

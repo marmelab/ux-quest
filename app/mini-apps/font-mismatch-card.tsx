@@ -122,6 +122,8 @@ function FontMismatchCard() {
 export const fontMismatchCard: MiniAppDefinition = {
   id: "font-mismatch-card",
   name: "User Profile Card",
+  introduction:
+    "This is a user profile card. You can edit any field by clicking on it.",
   category: "forms",
   difficulty: "medium",
   component: FontMismatchCard,
