@@ -25,13 +25,11 @@ export function AnswerFeedback({
             : "bg-red-50 text-red-900 dark:bg-red-950 dark:text-red-100"
         }`}
       >
-        <p className="font-medium">
-          {passed ? "Correct!" : "Incorrect"}
-        </p>
+        <p className="font-medium">{passed ? "Correct!" : "Incorrect"}</p>
       </div>
 
-      <div className="border-border rounded-lg border p-4">
-        <p className="text-muted-foreground mb-1 text-xs font-medium uppercase">
+      <div className="rounded-lg border border-border p-4">
+        <p className="mb-1 text-xs font-medium text-muted-foreground uppercase">
           Expected Answer
         </p>
         <p className="text-sm">{expectedAnswer}</p>

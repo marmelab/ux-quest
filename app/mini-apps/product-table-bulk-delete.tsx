@@ -138,10 +138,10 @@ function ProductTableBulkDelete() {
         <span className="text-xs text-muted-foreground">
           {products.length} product{products.length !== 1 && "s"}
         </span>
-        <div className={`flex items-center gap-2 ${selected.size > 0 ? "visible" : "invisible"}`}>
-          <span className="text-xs font-medium">
-            {selected.size} selected
-          </span>
+        <div
+          className={`flex items-center gap-2 ${selected.size > 0 ? "visible" : "invisible"}`}
+        >
+          <span className="text-xs font-medium">{selected.size} selected</span>
           <Dialog>
             <DialogTrigger render={<Button variant="destructive" size="xs" />}>
               Delete selected
@@ -254,7 +254,7 @@ export const productTableBulkDelete: MiniAppDefinition = {
   id: "product-table-bulk-delete",
   name: "Product Bulk Actions",
   introduction:
-    "A product inventory table with checkboxes for selecting rows and a bulk delete action. Try selecting and managing products.",
+    "A product inventory table with checkboxes for selecting rows and performing bulk actions.",
   category: "lists",
   difficulty: "medium",
   component: ProductTableBulkDelete,

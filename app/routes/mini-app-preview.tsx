@@ -20,7 +20,9 @@ export default function MiniAppPreviewRoute() {
   return (
     <div className="mx-auto max-w-3xl p-8">
       <h1 className="mb-1 text-lg font-semibold">{miniApp.name}</h1>
-      <p className="mb-6 text-sm text-muted-foreground">{miniApp.introduction}</p>
+      <p className="mb-6 text-sm text-muted-foreground">
+        {miniApp.introduction}
+      </p>
       <div className="rounded-lg border p-6">
         <Component />
       </div>

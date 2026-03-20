@@ -22,18 +22,18 @@ export function useSemanticSimilarity() {
     async (
       userAnswer: string,
       expectedAnswers: string[],
-      wrongAnswers?: string[],
+      wrongAnswers?: string[]
     ): Promise<number> => {
       if (wrongAnswers && wrongAnswers.length > 0) {
         return computeContrastiveSimilarity(
           userAnswer,
           expectedAnswers,
-          wrongAnswers,
+          wrongAnswers
         )
       }
       return computeBestSimilarity(userAnswer, expectedAnswers)
     },
-    [],
+    []
   )
 
   return { isLoading, error, compare }

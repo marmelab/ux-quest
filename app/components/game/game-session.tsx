@@ -12,8 +12,11 @@ import { Button } from "~/components/ui/button"
 export function GameSession() {
   const { state, startGame, submitAnswer, nextAfterReview, maxAttempts } =
     useGame()
-  const { isLoading: modelLoading, error: modelError, compare } =
-    useSemanticSimilarity()
+  const {
+    isLoading: modelLoading,
+    error: modelError,
+    compare,
+  } = useSemanticSimilarity()
   const navigate = useNavigate()
   const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -25,7 +28,7 @@ export function GameSession() {
         const similarity = await compare(
           text,
           currentMiniApp.expectedAnswers,
-          currentMiniApp.wrongAnswers,
+          currentMiniApp.wrongAnswers
         )
         submitAnswer({
           text,
@@ -36,7 +39,7 @@ export function GameSession() {
         setIsSubmitting(false)
       }
     },
-    [state.selectedMiniApps, state.currentIndex, compare, submitAnswer],
+    [state.selectedMiniApps, state.currentIndex, compare, submitAnswer]
   )
 
   const handleNext = useCallback(() => {
@@ -46,7 +49,13 @@ export function GameSession() {
     } else {
       nextAfterReview()
     }
-  }, [state.currentIndex, state.selectedMiniApps.length, state.results, navigate, nextAfterReview])
+  }, [
+    state.currentIndex,
+    state.selectedMiniApps.length,
+    state.results,
+    navigate,
+    nextAfterReview,
+  ])
 
   // Idle phase — start screen
   if (state.phase === "idle") {
@@ -54,12 +63,12 @@ export function GameSession() {
       <div className="flex min-h-svh items-center justify-center p-6">
         <div className="flex flex-col items-center gap-4 text-center">
           <h1 className="text-2xl font-bold">Ready to play?</h1>
-          <p className="text-muted-foreground max-w-md text-sm">
+          <p className="max-w-md text-sm text-muted-foreground">
             You will examine {state.selectedMiniApps.length || 10}{" "}
             mini-applications and try to detect the UX problem in each one.
           </p>
           {modelLoading && (
-            <p className="text-muted-foreground text-sm">
+            <p className="text-sm text-muted-foreground">
               Loading analysis model...
             </p>
           )}
@@ -104,9 +113,7 @@ export function GameSession() {
             passed={lastResult.passed}
             expectedAnswer={currentMiniApp.expectedAnswers[0]}
             onNext={handleNext}
-            isLast={
-              state.currentIndex === state.selectedMiniApps.length - 1
-            }
+            isLast={state.currentIndex === state.selectedMiniApps.length - 1}
           />
         ) : (
           <AnswerInput

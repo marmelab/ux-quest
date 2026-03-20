@@ -12,10 +12,10 @@ export function ScoreBoard({ results }: ScoreBoardProps) {
   return (
     <div className="flex flex-col gap-6">
       <div className="text-center">
-        <p className="text-muted-foreground text-sm">Your Score</p>
+        <p className="text-sm text-muted-foreground">Your Score</p>
         <p className="text-5xl font-bold">
           {score}
-          <span className="text-muted-foreground text-2xl">
+          <span className="text-2xl text-muted-foreground">
             {" "}
             / {results.length}
           </span>
@@ -28,13 +28,13 @@ export function ScoreBoard({ results }: ScoreBoardProps) {
           return (
             <div
               key={result.miniAppId}
-              className="border-border flex items-center justify-between rounded-lg border px-4 py-3"
+              className="flex items-center justify-between rounded-lg border border-border px-4 py-3"
             >
               <div>
                 <p className="text-sm font-medium">
                   {miniApp?.name ?? result.miniAppId}
                 </p>
-                <p className="text-muted-foreground text-xs">
+                <p className="text-xs text-muted-foreground">
                   {result.attempts.length} attempt
                   {result.attempts.length > 1 ? "s" : ""}
                 </p>

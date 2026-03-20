@@ -13,7 +13,9 @@ function TemplateMiniApp() {
   return (
     <div className="flex flex-col gap-4 p-4">
       <h2 className="text-lg font-medium">Example Mini-App</h2>
-      <p>This is a template. Replace this with a UI that contains a UX problem.</p>
+      <p>
+        This is a template. Replace this with a UI that contains a UX problem.
+      </p>
     </div>
   )
 }

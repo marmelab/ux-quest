@@ -15,7 +15,7 @@ export function filterByCategory(category: Category): MiniAppDefinition[] {
 }
 
 export function filterByDifficulty(
-  difficulty: Difficulty,
+  difficulty: Difficulty
 ): MiniAppDefinition[] {
   return miniApps.filter((m) => m.difficulty === difficulty)
 }

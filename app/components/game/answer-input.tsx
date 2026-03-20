@@ -53,7 +53,7 @@ export function AnswerInput({
       </div>
       <label className="text-sm font-medium">
         What is the UX problem?
-        <span className="text-muted-foreground ml-2">
+        <span className="ml-2 text-muted-foreground">
           ({remaining} attempt{remaining > 1 ? "s" : ""} remaining)
         </span>
       </label>

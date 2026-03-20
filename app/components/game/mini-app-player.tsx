@@ -6,7 +6,10 @@ interface MiniAppPlayerProps {
   disabled?: boolean
 }
 
-const difficultyVariant: Record<Difficulty, "default" | "secondary" | "destructive"> = {
+const difficultyVariant: Record<
+  Difficulty,
+  "default" | "secondary" | "destructive"
+> = {
   easy: "secondary",
   medium: "default",
   hard: "destructive",
@@ -28,7 +31,7 @@ export function MiniAppPlayer({ miniApp, disabled }: MiniAppPlayerProps) {
         <p className="text-sm text-muted-foreground">{miniApp.introduction}</p>
       </div>
       <div
-        className={`border-border rounded-lg border p-4 ${disabled ? "pointer-events-none opacity-50" : ""}`}
+        className={`rounded-lg border border-border p-4 ${disabled ? "pointer-events-none opacity-50" : ""}`}
       >
         <Component />
       </div>

@@ -15,9 +15,8 @@ export async function loadModel(): Promise<void> {
   if (loadingPromise) return loadingPromise
 
   loadingPromise = (async () => {
-    const { AutoTokenizer, AutoModelForSequenceClassification } = await import(
-      "@huggingface/transformers"
-    )
+    const { AutoTokenizer, AutoModelForSequenceClassification } =
+      await import("@huggingface/transformers")
     ;[tokenizer, model] = await Promise.all([
       AutoTokenizer.from_pretrained(CROSS_ENCODER_MODEL),
       AutoModelForSequenceClassification.from_pretrained(CROSS_ENCODER_MODEL, {
@@ -54,7 +53,7 @@ function sigmoid(x: number): number {
 
 export async function computeSimilarity(
   text1: string,
-  text2: string,
+  text2: string
 ): Promise<number> {
   if (!model) await loadModel()
   const raw = await scorePair(text1, text2)
@@ -66,7 +65,7 @@ export async function computeSimilarity(
  */
 export async function computeBestSimilarity(
   userAnswer: string,
-  expectedAnswers: string[],
+  expectedAnswers: string[]
 ): Promise<number> {
   if (!model) await loadModel()
 
@@ -85,7 +84,7 @@ export async function computeBestSimilarity(
 export async function computeContrastiveSimilarity(
   userAnswer: string,
   expectedAnswers: string[],
-  wrongAnswers: string[],
+  wrongAnswers: string[]
 ): Promise<number> {
   if (!model) await loadModel()
 
@@ -107,8 +106,7 @@ export async function computeContrastiveSimilarity(
   // If the answer is closer to a wrong example (within margin), reject it
   if (normRight - normWrong < CONTRASTIVE_MARGIN) {
     return (
-      normRight *
-      (0.5 + (0.5 * (normRight - normWrong)) / CONTRASTIVE_MARGIN)
+      normRight * (0.5 + (0.5 * (normRight - normWrong)) / CONTRASTIVE_MARGIN)
     )
   }
 

@@ -102,11 +102,11 @@ export function GameProvider({ children }: { children: ReactNode }) {
   const startGame = useCallback(() => dispatch({ type: "START_GAME" }), [])
   const submitAnswer = useCallback(
     (attempt: AttemptResult) => dispatch({ type: "SUBMIT_ATTEMPT", attempt }),
-    [],
+    []
   )
   const nextAfterReview = useCallback(
     () => dispatch({ type: "NEXT_MINI_APP" }),
-    [],
+    []
   )
   const resetGame = useCallback(() => dispatch({ type: "RESET" }), [])
 

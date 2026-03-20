@@ -7,7 +7,7 @@ export default function Home() {
       <div className="flex max-w-md flex-col items-center gap-6 text-center">
         <div className="flex flex-col gap-2">
           <h1 className="text-3xl font-bold">Charlux</h1>
-          <p className="text-muted-foreground text-sm leading-relaxed">
+          <p className="text-sm leading-relaxed text-muted-foreground">
             Train yourself to spot UX problems. Examine 10 mini-applications,
             identify the flaw in each one, and test your score.
           </p>
