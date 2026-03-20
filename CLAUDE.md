@@ -17,9 +17,9 @@ Idle → Playing (interact with mini-app, submit answer) → Reviewing (show res
 
 ### Key layers
 
-- **Routes** (`app/routes.ts`): `/` (home), `/game` (session), `/results` (scoreboard).
+- **Routes** (`app/routes.ts`): `/` (home), `/game` (session), `/results` (scoreboard), `/mini-app/:id` (preview).
 - **Game state** (`app/hooks/use-game.tsx`): React Context + `useReducer`. `GameProvider` wraps the game route only. Actions: `START_GAME`, `SUBMIT_ATTEMPT`, `NEXT_MINI_APP`, `RESET`.
-- **Semantic similarity** (`app/lib/semantic-similarity.client.ts`): Uses `Xenova/all-MiniLM-L6-v2` via `@huggingface/transformers`. The `.client.ts` suffix excludes it from the SSR bundle. `computeBestSimilarity()` compares the user answer against all `expectedAnswers` variants and returns the best cosine similarity score. Threshold: 0.65.
+- **Semantic similarity** (`app/lib/semantic-similarity.client.ts`): Uses `Xenova/ms-marco-MiniLM-L-6-v2` via `@huggingface/transformers`. The `.client.ts` suffix excludes it from the SSR bundle. `computeBestSimilarity()` compares the user answer against all `expectedAnswers` variants and returns the best cosine similarity score. Threshold: 0.65.
 - **Game UI** (`app/components/game/`): `game-session` orchestrates the flow; `mini-app-player`, `answer-input`, `answer-feedback`, `score-board`, `progress-bar` are presentational.
 
 ### Mini-app registry
@@ -32,7 +32,7 @@ Mini-apps must not introduce unintended UX issues — the only flaw should be th
 
 ## Stack
 
-- React Router 7 (SSR enabled), React 19, TypeScript, Vite
+- React Router 7 (SPA mode, SSR disabled), React 19, TypeScript, Vite
 - Tailwind CSS 4 + shadcn/ui (base-nova style, Base UI primitives)
 - Path alias: `~/` maps to `./app/`
 - UI language: English
