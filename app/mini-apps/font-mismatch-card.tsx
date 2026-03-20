@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import type { MiniAppDefinition } from "~/lib/types"
 
 interface UserData {
@@ -22,30 +22,76 @@ function FontMismatchCard() {
   const [editing, setEditing] = useState<keyof UserData | null>(null)
   const [draft, setDraft] = useState("")
   const [saved, setSaved] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const tabTargetRef = useRef<keyof UserData | null>(null)
+
+  function isValidEmail(value: string) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+  }
+
+  const requiredFields: (keyof UserData)[] = ["name", "email"]
 
   function startEditing(field: keyof UserData) {
+    if (editing && requiredFields.includes(editing) && !draft.trim()) {
+      setError("This field is required")
+      return
+    }
+    if (editing === "email" && !isValidEmail(draft)) {
+      setError("Please enter a valid email address")
+      return
+    }
+    setError(null)
     setEditing(field)
     setDraft(user[field])
   }
 
   function save() {
     if (editing) {
+      if (requiredFields.includes(editing) && !draft.trim()) {
+        setError("This field is required")
+        tabTargetRef.current = null
+        return
+      }
+      if (editing === "email" && !isValidEmail(draft)) {
+        setError("Please enter a valid email address")
+        tabTargetRef.current = null
+        return
+      }
       if (draft !== user[editing]) {
         setUser((prev) => ({ ...prev, [editing]: draft }))
         setSaved(true)
         setTimeout(() => setSaved(false), 2000)
       }
-      setEditing(null)
+      setError(null)
+      const nextField = tabTargetRef.current
+      tabTargetRef.current = null
+      if (nextField) {
+        setEditing(nextField)
+        setDraft(user[nextField])
+      } else {
+        setEditing(null)
+      }
     }
   }
 
   function cancel() {
+    setError(null)
     setEditing(null)
   }
 
   function handleKeyDown(e: React.KeyboardEvent) {
     if (e.key === "Enter") save()
     if (e.key === "Escape") cancel()
+    if (e.key === "Tab" && editing) {
+      e.preventDefault()
+      const fieldKeys = fields.map((f) => f.key)
+      const currentIndex = fieldKeys.indexOf(editing)
+      const direction = e.shiftKey ? -1 : 1
+      const nextIndex =
+        (currentIndex + direction + fieldKeys.length) % fieldKeys.length
+      tabTargetRef.current = fieldKeys[nextIndex]
+      save()
+    }
   }
 
   const fields: { key: keyof UserData; label: string }[] = [
@@ -83,20 +129,32 @@ function FontMismatchCard() {
             onClick={() => editing !== key && startEditing(key)}
           >
             <div className="flex flex-1 flex-col gap-0.5">
-              <span className="text-xs text-muted-foreground">{label}</span>
+              <span className="text-xs text-muted-foreground">
+                {label}
+                {requiredFields.includes(key) && (
+                  <span className="text-destructive"> *</span>
+                )}
+              </span>
               {editing === key ? (
-                <input
-                  type="text"
-                  value={draft}
-                  onChange={(e) => setDraft(e.target.value)}
-                  onKeyDown={handleKeyDown}
-                  onBlur={save}
-                  autoFocus
-                  className="w-full border-b border-border bg-transparent py-0.5 outline-none focus:border-ring"
-                  style={{ fontFamily: "system-ui, -apple-system, sans-serif" }}
-                />
+                <>
+                  <input
+                    type="text"
+                    value={draft}
+                    onChange={(e) => setDraft(e.target.value)}
+                    onKeyDown={handleKeyDown}
+                    onBlur={save}
+                    autoFocus
+                    className="w-full border-b border-border bg-transparent py-0.5 outline-none focus:border-ring"
+                    style={{
+                      fontFamily: "system-ui, -apple-system, sans-serif",
+                    }}
+                  />
+                  {error && (
+                    <span className="text-xs text-destructive">{error}</span>
+                  )}
+                </>
               ) : (
-                <span className="py-0.5">{user[key]}</span>
+                <span className="min-h-[1lh] py-0.5">{user[key]}</span>
               )}
             </div>
             {editing !== key && (
@@ -122,8 +180,7 @@ function FontMismatchCard() {
 export const fontMismatchCard: MiniAppDefinition = {
   id: "font-mismatch-card",
   name: "User Profile Card",
-  introduction:
-    "This is a user profile card. You can edit any field by clicking on it.",
+  introduction: "A user profile card that users can edit in place.",
   category: "forms",
   difficulty: "medium",
   component: FontMismatchCard,
