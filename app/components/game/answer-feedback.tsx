@@ -30,25 +30,6 @@ export function AnswerFeedback({
         </p>
       </div>
 
-      <div className="flex flex-col gap-2">
-        <p className="text-sm font-medium">Your attempts:</p>
-        {attempts.map((attempt, i) => (
-          <div
-            key={i}
-            className="bg-muted flex items-center justify-between rounded-lg px-3 py-2 text-sm"
-          >
-            <span className="flex-1">{attempt.text}</span>
-            <span
-              className={`ml-2 text-xs font-medium ${
-                attempt.correct ? "text-green-600" : "text-muted-foreground"
-              }`}
-            >
-              {Math.round(attempt.similarity * 100)}%
-            </span>
-          </div>
-        ))}
-      </div>
-
       <div className="border-border rounded-lg border p-4">
         <p className="text-muted-foreground mb-1 text-xs font-medium uppercase">
           Expected Answer

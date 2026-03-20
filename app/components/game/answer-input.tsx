@@ -47,7 +47,7 @@ export function AnswerInput({
       >
         <p className="text-sm font-medium text-red-800 dark:text-red-200">
           {lastAttempt && !lastAttempt.correct
-            ? `Not quite (${Math.round(lastAttempt.similarity * 100)}% match) — try again!`
+            ? `Not quite — try again!`
             : "\u00A0"}
         </p>
       </div>
