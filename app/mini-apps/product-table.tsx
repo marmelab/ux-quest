@@ -19,24 +19,150 @@ interface Product {
 }
 
 const products: Product[] = [
-  { id: 1, name: "Classic Oxford Shirt", category: "Shirts", price: 59.99, size: "M", color: "White" },
-  { id: 2, name: "Slim Fit Chinos", category: "Pants", price: 79.99, size: "32", color: "Khaki" },
-  { id: 3, name: "Wool Blend Blazer", category: "Jackets", price: 189.99, size: "L", color: "Navy" },
-  { id: 4, name: "Crew Neck T-Shirt", category: "Shirts", price: 24.99, size: "S", color: "Black" },
-  { id: 5, name: "Denim Jacket", category: "Jackets", price: 129.99, size: "M", color: "Indigo" },
-  { id: 6, name: "Linen Shorts", category: "Pants", price: 49.99, size: "L", color: "Beige" },
-  { id: 7, name: "Cashmere Sweater", category: "Knitwear", price: 149.99, size: "M", color: "Grey" },
-  { id: 8, name: "Polo Shirt", category: "Shirts", price: 44.99, size: "XL", color: "Green" },
-  { id: 9, name: "Cargo Pants", category: "Pants", price: 69.99, size: "34", color: "Olive" },
-  { id: 10, name: "Puffer Vest", category: "Jackets", price: 109.99, size: "S", color: "Black" },
-  { id: 11, name: "Flannel Shirt", category: "Shirts", price: 54.99, size: "L", color: "Red" },
-  { id: 12, name: "Tailored Trousers", category: "Pants", price: 89.99, size: "30", color: "Charcoal" },
-  { id: 13, name: "Merino V-Neck", category: "Knitwear", price: 79.99, size: "M", color: "Burgundy" },
-  { id: 14, name: "Rain Jacket", category: "Jackets", price: 139.99, size: "XL", color: "Yellow" },
-  { id: 15, name: "Henley Shirt", category: "Shirts", price: 34.99, size: "S", color: "Navy" },
-  { id: 16, name: "Jogger Pants", category: "Pants", price: 59.99, size: "M", color: "Grey" },
-  { id: 17, name: "Cable Knit Cardigan", category: "Knitwear", price: 119.99, size: "L", color: "Cream" },
-  { id: 18, name: "Bomber Jacket", category: "Jackets", price: 159.99, size: "M", color: "Black" },
+  {
+    id: 1,
+    name: "Classic Oxford Shirt",
+    category: "Shirts",
+    price: 59.99,
+    size: "M",
+    color: "White",
+  },
+  {
+    id: 2,
+    name: "Slim Fit Chinos",
+    category: "Pants",
+    price: 79.99,
+    size: "32",
+    color: "Khaki",
+  },
+  {
+    id: 3,
+    name: "Wool Blend Blazer",
+    category: "Jackets",
+    price: 189.99,
+    size: "L",
+    color: "Navy",
+  },
+  {
+    id: 4,
+    name: "Crew Neck T-Shirt",
+    category: "Shirts",
+    price: 24.99,
+    size: "S",
+    color: "Black",
+  },
+  {
+    id: 5,
+    name: "Denim Jacket",
+    category: "Jackets",
+    price: 129.99,
+    size: "M",
+    color: "Indigo",
+  },
+  {
+    id: 6,
+    name: "Linen Shorts",
+    category: "Pants",
+    price: 49.99,
+    size: "L",
+    color: "Beige",
+  },
+  {
+    id: 7,
+    name: "Cashmere Sweater",
+    category: "Knitwear",
+    price: 149.99,
+    size: "M",
+    color: "Grey",
+  },
+  {
+    id: 8,
+    name: "Polo Shirt",
+    category: "Shirts",
+    price: 44.99,
+    size: "XL",
+    color: "Green",
+  },
+  {
+    id: 9,
+    name: "Cargo Pants",
+    category: "Pants",
+    price: 69.99,
+    size: "34",
+    color: "Olive",
+  },
+  {
+    id: 10,
+    name: "Puffer Vest",
+    category: "Jackets",
+    price: 109.99,
+    size: "S",
+    color: "Black",
+  },
+  {
+    id: 11,
+    name: "Flannel Shirt",
+    category: "Shirts",
+    price: 54.99,
+    size: "L",
+    color: "Red",
+  },
+  {
+    id: 12,
+    name: "Tailored Trousers",
+    category: "Pants",
+    price: 89.99,
+    size: "30",
+    color: "Charcoal",
+  },
+  {
+    id: 13,
+    name: "Merino V-Neck",
+    category: "Knitwear",
+    price: 79.99,
+    size: "M",
+    color: "Burgundy",
+  },
+  {
+    id: 14,
+    name: "Rain Jacket",
+    category: "Jackets",
+    price: 139.99,
+    size: "XL",
+    color: "Yellow",
+  },
+  {
+    id: 15,
+    name: "Henley Shirt",
+    category: "Shirts",
+    price: 34.99,
+    size: "S",
+    color: "Navy",
+  },
+  {
+    id: 16,
+    name: "Jogger Pants",
+    category: "Pants",
+    price: 59.99,
+    size: "M",
+    color: "Grey",
+  },
+  {
+    id: 17,
+    name: "Cable Knit Cardigan",
+    category: "Knitwear",
+    price: 119.99,
+    size: "L",
+    color: "Cream",
+  },
+  {
+    id: 18,
+    name: "Bomber Jacket",
+    category: "Jackets",
+    price: 159.99,
+    size: "M",
+    color: "Black",
+  },
 ]
 
 type SortKey = keyof Product
@@ -76,7 +202,7 @@ function ProductTable() {
       (p) =>
         p.name.toLowerCase().includes(q) ||
         p.category.toLowerCase().includes(q) ||
-        p.color.toLowerCase().includes(q),
+        p.color.toLowerCase().includes(q)
     )
   }, [search])
 
@@ -84,7 +210,10 @@ function ProductTable() {
     return [...filtered].sort((a, b) => {
       const av = a[sortKey]
       const bv = b[sortKey]
-      const cmp = typeof av === "number" ? av - (bv as number) : String(av).localeCompare(String(bv))
+      const cmp =
+        typeof av === "number"
+          ? av - (bv as number)
+          : String(av).localeCompare(String(bv))
       return sortDir === "asc" ? cmp : -cmp
     })
   }, [filtered, sortKey, sortDir])
@@ -106,7 +235,7 @@ function ProductTable() {
         {search && (
           <button
             onClick={() => setSearch("")}
-            className="absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+            className="absolute top-1/2 right-2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
             aria-label="Clear search"
           >
             ✕
@@ -122,12 +251,14 @@ function ProductTable() {
               {columns.map((col) => (
                 <TableHead
                   key={col.key}
-                  className={`cursor-pointer select-none text-xs hover:text-foreground ${col.align === "right" ? "text-right" : ""}`}
+                  className={`cursor-pointer text-xs select-none hover:text-foreground ${col.align === "right" ? "text-right" : ""}`}
                   onClick={() => handleSort(col.key)}
                 >
                   {col.label}
                   {sortKey === col.key && (
-                    <span className="ml-1">{sortDir === "asc" ? "↑" : "↓"}</span>
+                    <span className="ml-1">
+                      {sortDir === "asc" ? "↑" : "↓"}
+                    </span>
                   )}
                 </TableHead>
               ))}
@@ -136,7 +267,10 @@ function ProductTable() {
           <TableBody>
             {paged.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={columns.length} className="py-6 text-center text-muted-foreground">
+                <TableCell
+                  colSpan={columns.length}
+                  className="py-6 text-center text-muted-foreground"
+                >
                   No products found.
                 </TableCell>
               </TableRow>
@@ -144,10 +278,14 @@ function ProductTable() {
               paged.map((p) => (
                 <TableRow key={p.id}>
                   <TableCell>{p.name}</TableCell>
-                  <TableCell className="text-muted-foreground">{p.category}</TableCell>
+                  <TableCell className="text-muted-foreground">
+                    {p.category}
+                  </TableCell>
                   <TableCell>{p.size}</TableCell>
                   <TableCell>{p.color}</TableCell>
-                  <TableCell className="text-right tabular-nums">${p.price.toFixed(2)}</TableCell>
+                  <TableCell className="text-right tabular-nums">
+                    ${p.price.toFixed(2)}
+                  </TableCell>
                 </TableRow>
               ))
             )}
@@ -193,8 +331,9 @@ function ProductTable() {
 export const productTable: MiniAppDefinition = {
   id: "product-table",
   name: "Product Catalog",
-  introduction: "A product catalog with search, sorting, and pagination. Browse the clothing items and try out the different features.",
-  category: "interaction",
+  introduction:
+    "A product catalog with search, sorting, and pagination. Browse the clothing items and try out the different features.",
+  category: "lists",
   difficulty: "medium",
   component: ProductTable,
   expectedAnswers: [

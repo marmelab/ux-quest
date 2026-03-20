@@ -7,6 +7,7 @@ export type Category =
   | "accessibility"
   | "layout"
   | "interaction"
+  | "lists"
 
 export type Difficulty = "easy" | "medium" | "hard"
 
