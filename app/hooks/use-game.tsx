@@ -6,6 +6,7 @@ import {
   type ReactNode,
 } from "react"
 import { pickProgressive } from "~/lib/mini-app-registry"
+import { computeQuestionScore } from "~/lib/scoring"
 import type {
   AttemptResult,
   GamePhase,
@@ -48,10 +49,17 @@ function gameReducer(state: GameState, action: GameAction): GameState {
       const isLastAttempt = attempts.length >= MAX_ATTEMPTS
 
       if (isCorrect || isLastAttempt) {
+        const difficulty = state.selectedMiniApps[state.currentIndex].difficulty
+        const score = computeQuestionScore(
+          difficulty,
+          attempts.length,
+          isCorrect
+        )
         const result: TestResult = {
           miniAppId: state.selectedMiniApps[state.currentIndex].id,
           attempts,
           passed: isCorrect,
+          score,
         }
         return {
           ...state,

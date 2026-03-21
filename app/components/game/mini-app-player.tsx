@@ -5,13 +5,10 @@ interface MiniAppPlayerProps {
   miniApp: MiniAppDefinition
 }
 
-const difficultyVariant: Record<
-  Difficulty,
-  "default" | "secondary" | "destructive"
-> = {
-  easy: "secondary",
-  medium: "default",
-  hard: "destructive",
+const difficultyColors: Record<Difficulty, string> = {
+  easy: "bg-emerald-500 text-white",
+  medium: "bg-amber-500 text-white",
+  hard: "bg-red-500 text-white",
 }
 
 export function MiniAppPlayer({ miniApp }: MiniAppPlayerProps) {
@@ -22,7 +19,7 @@ export function MiniAppPlayer({ miniApp }: MiniAppPlayerProps) {
       <div className="flex flex-col gap-1">
         <div className="flex items-center gap-2">
           <h2 className="text-lg font-medium">{miniApp.name}</h2>
-          <Badge variant={difficultyVariant[miniApp.difficulty]}>
+          <Badge className={difficultyColors[miniApp.difficulty]}>
             {miniApp.difficulty}
           </Badge>
         </div>

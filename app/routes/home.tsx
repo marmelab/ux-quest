@@ -34,8 +34,8 @@ export default function Home() {
         <div className="flex flex-col gap-2">
           <h1 className="text-3xl font-bold">UX Quest</h1>
           <p className="text-sm leading-relaxed text-muted-foreground">
-            Train yourself to spot UX problems. Examine 10 mini-applications,
-            identify the flaw in each one, and test your score.
+            Examine mini-applications,<br />
+            identify the UX flaw in each one,<br />and train yourself to spot them in the wild!
           </p>
         </div>
         {error && (

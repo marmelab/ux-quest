@@ -37,6 +37,7 @@ export interface TestResult {
   miniAppId: string
   attempts: AttemptResult[]
   passed: boolean
+  score: number
 }
 
 export type GamePhase = "idle" | "playing" | "reviewing" | "finished"

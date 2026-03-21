@@ -1,16 +1,11 @@
+import { Banana } from "lucide-react"
 import type { Difficulty } from "~/lib/types"
 
 interface ProgressBarProps {
   current: number
   total: number
   perDifficulty: number
-  currentDifficulty: Difficulty
-}
-
-const DIFFICULTY_LABELS: Record<Difficulty, string> = {
-  easy: "Easy",
-  medium: "Medium",
-  hard: "Hard",
+  score: number
 }
 
 const DIFFICULTY_COLORS: Record<Difficulty, string> = {
@@ -25,7 +20,7 @@ export function ProgressBar({
   current,
   total,
   perDifficulty,
-  currentDifficulty,
+  score,
 }: ProgressBarProps) {
   return (
     <div className="flex flex-col gap-2">
@@ -33,8 +28,9 @@ export function ProgressBar({
         <span className="font-medium">
           Question {current} / {total}
         </span>
-        <span className="text-muted-foreground">
-          {DIFFICULTY_LABELS[currentDifficulty]}
+        <span className="flex items-center gap-1.5 rounded-full border-2 border-border px-3 py-0.5 font-semibold">
+          <Banana className="size-4 text-amber-500" />
+          {score.toLocaleString()}
         </span>
       </div>
       <div className="flex gap-1">

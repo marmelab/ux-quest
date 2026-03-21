@@ -1,3 +1,4 @@
+import { Banana } from "lucide-react"
 import { Button } from "~/components/ui/button"
 import type { AttemptResult } from "~/lib/types"
 
@@ -5,6 +6,7 @@ interface AnswerFeedbackProps {
   attempts: AttemptResult[]
   passed: boolean
   expectedAnswer: string
+  score: number
   onNext: () => void
   isLast: boolean
 }
@@ -13,19 +15,23 @@ export function AnswerFeedback({
   attempts,
   passed,
   expectedAnswer,
+  score,
   onNext,
   isLast,
 }: AnswerFeedbackProps) {
   return (
     <div className="flex flex-col gap-4">
       <div
-        className={`rounded-lg p-4 ${
+        className={`flex items-center justify-between rounded-lg p-4 ${
           passed
             ? "bg-green-50 text-green-900 dark:bg-green-950 dark:text-green-100"
             : "bg-red-50 text-red-900 dark:bg-red-950 dark:text-red-100"
         }`}
       >
         <p className="font-medium">{passed ? "Correct!" : "Incorrect"}</p>
+        <span className="flex items-center gap-1 font-semibold">
+          <Banana className="size-4" />+{score.toLocaleString()}
+        </span>
       </div>
 
       <div className="rounded-lg border border-border p-4">

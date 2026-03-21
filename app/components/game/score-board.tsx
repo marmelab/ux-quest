@@ -1,4 +1,6 @@
+import { Banana } from "lucide-react"
 import type { TestResult } from "~/lib/types"
+import { computeMaxScore, computeTotalScore } from "~/lib/scoring"
 import { getAllMiniApps } from "~/lib/mini-app-registry"
 
 interface ScoreBoardProps {
@@ -6,50 +8,29 @@ interface ScoreBoardProps {
 }
 
 export function ScoreBoard({ results }: ScoreBoardProps) {
-  const score = results.filter((r) => r.passed).length
+  const totalScore = computeTotalScore(results)
   const allMiniApps = getAllMiniApps()
 
+  // Compute max score from the mini-apps that were actually played
+  const playedMiniApps = results
+    .map((r) => allMiniApps.find((m) => m.id === r.miniAppId))
+    .filter((m): m is (typeof allMiniApps)[number] => m != null)
+  const maxScore = computeMaxScore(playedMiniApps)
+
   return (
-    <div className="flex flex-col gap-6">
-      <div className="text-center">
-        <p className="text-sm text-muted-foreground">Your Score</p>
-        <p className="text-5xl font-bold">
-          {score}
-          <span className="text-2xl text-muted-foreground">
-            {" "}
-            / {results.length}
-          </span>
+    <div className="flex flex-col items-center gap-2 py-8">
+      <p className="text-sm font-medium text-muted-foreground uppercase tracking-wide">
+        Your Score
+      </p>
+      <div className="flex items-center gap-3">
+        <Banana className="size-10 text-amber-500" />
+        <p className="text-6xl font-bold tabular-nums">
+          {totalScore.toLocaleString()}
         </p>
       </div>
-
-      <div className="flex flex-col gap-2">
-        {results.map((result) => {
-          const miniApp = allMiniApps.find((m) => m.id === result.miniAppId)
-          return (
-            <div
-              key={result.miniAppId}
-              className="flex items-center justify-between rounded-lg border border-border px-4 py-3"
-            >
-              <div>
-                <p className="text-sm font-medium">
-                  {miniApp?.name ?? result.miniAppId}
-                </p>
-                <p className="text-xs text-muted-foreground">
-                  {result.attempts.length} attempt
-                  {result.attempts.length > 1 ? "s" : ""}
-                </p>
-              </div>
-              <span
-                className={`text-sm font-medium ${
-                  result.passed ? "text-green-600" : "text-red-600"
-                }`}
-              >
-                {result.passed ? "Found" : "Missed"}
-              </span>
-            </div>
-          )
-        })}
-      </div>
+      <p className="text-lg text-muted-foreground">
+        out of {maxScore.toLocaleString()}
+      </p>
     </div>
   )
 }

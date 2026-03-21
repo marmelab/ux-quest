@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 import { useNavigate } from "react-router"
 import { useGame } from "~/hooks/use-game"
 import { useSemanticSimilarity } from "~/hooks/use-semantic-similarity"
+import { computeTotalScore } from "~/lib/scoring"
 import { SIMILARITY_THRESHOLD } from "~/lib/semantic-similarity.client"
 import { AnswerFeedback } from "./answer-feedback"
 import { AnswerInput } from "./answer-input"
@@ -13,6 +14,10 @@ export function GameSession() {
   const { compare } = useSemanticSimilarity()
   const navigate = useNavigate()
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const totalScore = useMemo(
+    () => computeTotalScore(state.results),
+    [state.results]
+  )
 
   // Auto-start the game on mount
   useEffect(() => {
@@ -82,7 +87,7 @@ export function GameSession() {
           current={state.currentIndex + 1}
           total={state.selectedMiniApps.length}
           perDifficulty={3}
-          currentDifficulty={currentMiniApp.difficulty}
+          score={totalScore}
         />
 
         <MiniAppPlayer miniApp={currentMiniApp} />
@@ -92,6 +97,7 @@ export function GameSession() {
             attempts={lastResult.attempts}
             passed={lastResult.passed}
             expectedAnswer={currentMiniApp.expectedAnswers[0]}
+            score={lastResult.score}
             onNext={handleNext}
             isLast={state.currentIndex === state.selectedMiniApps.length - 1}
           />
