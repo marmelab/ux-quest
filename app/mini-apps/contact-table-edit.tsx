@@ -307,7 +307,7 @@ export const contactTableEdit: MiniAppDefinition = {
   name: "Contact Directory",
   introduction: "An editable contact directory.",
   category: "interaction",
-  difficulty: "medium",
+  difficulty: "hard",
   component: ContactTableEdit,
   expectedAnswers: [
     "The edit dialog cannot be closed by clicking outside of it or pressing the Escape key.",

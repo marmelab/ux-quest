@@ -5,7 +5,7 @@ import {
   useReducer,
   type ReactNode,
 } from "react"
-import { pickRandom } from "~/lib/mini-app-registry"
+import { pickProgressive } from "~/lib/mini-app-registry"
 import type {
   AttemptResult,
   GamePhase,
@@ -14,7 +14,7 @@ import type {
 } from "~/lib/types"
 
 const MAX_ATTEMPTS = 3
-const ROUND_COUNT = 10
+const PER_DIFFICULTY = 3
 
 const initialState: GameState = {
   phase: "idle",
@@ -35,7 +35,7 @@ function gameReducer(state: GameState, action: GameAction): GameState {
     case "START_GAME": {
       return {
         phase: "playing",
-        selectedMiniApps: pickRandom(ROUND_COUNT),
+        selectedMiniApps: pickProgressive(PER_DIFFICULTY),
         currentIndex: 0,
         results: [],
         currentAttempts: [],

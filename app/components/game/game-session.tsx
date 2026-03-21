@@ -81,6 +81,8 @@ export function GameSession() {
         <ProgressBar
           current={state.currentIndex + 1}
           total={state.selectedMiniApps.length}
+          perDifficulty={3}
+          currentDifficulty={currentMiniApp.difficulty}
         />
 
         <MiniAppPlayer miniApp={currentMiniApp} />
