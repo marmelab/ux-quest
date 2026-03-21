@@ -182,7 +182,7 @@ export const editableProfile: MiniAppDefinition = {
   name: "User Profile Card",
   introduction: "A user profile card that users can edit in place.",
   category: "forms",
-  difficulty: "medium",
+  difficulty: "hard",
   component: EditableProfile,
   expectedAnswers: [
     "The font changes when editing a field. The input uses a different font than the display text.",
