@@ -9,6 +9,7 @@ import { shirtCatalogFilter } from "./shirt-catalog-filter"
 import { loginForm } from "./login-form"
 import { bookstoreAdmin } from "./bookstore-admin"
 import { salesChart } from "./sales-chart"
+import { contactSheet } from "./contact-sheet"
 
 export const miniApps: MiniAppDefinition[] = [
   editableProfile,
@@ -21,5 +22,6 @@ export const miniApps: MiniAppDefinition[] = [
   loginForm,
   bookstoreAdmin,
   salesChart,
+  contactSheet,
   // Add new mini-app definitions here
 ]
