@@ -105,7 +105,7 @@ export function GameSession() {
           total={state.selectedMiniApps.length}
         />
 
-        <MiniAppPlayer miniApp={currentMiniApp} disabled={isReviewing} />
+        <MiniAppPlayer miniApp={currentMiniApp} />
 
         {isReviewing && lastResult ? (
           <AnswerFeedback

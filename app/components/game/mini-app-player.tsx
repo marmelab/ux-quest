@@ -3,7 +3,6 @@ import type { Difficulty, MiniAppDefinition } from "~/lib/types"
 
 interface MiniAppPlayerProps {
   miniApp: MiniAppDefinition
-  disabled?: boolean
 }
 
 const difficultyVariant: Record<
@@ -15,7 +14,7 @@ const difficultyVariant: Record<
   hard: "destructive",
 }
 
-export function MiniAppPlayer({ miniApp, disabled }: MiniAppPlayerProps) {
+export function MiniAppPlayer({ miniApp }: MiniAppPlayerProps) {
   const Component = miniApp.component
 
   return (
@@ -31,7 +30,7 @@ export function MiniAppPlayer({ miniApp, disabled }: MiniAppPlayerProps) {
         <p className="text-sm text-muted-foreground">{miniApp.introduction}</p>
       </div>
       <div
-        className={`rounded-lg border border-border p-4 ${disabled ? "pointer-events-none opacity-50" : ""}`}
+        className="rounded-lg border border-border p-4"
       >
         <Component />
       </div>
