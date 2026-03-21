@@ -29,9 +29,7 @@ export function MiniAppPlayer({ miniApp }: MiniAppPlayerProps) {
         </div>
         <p className="text-sm text-muted-foreground">{miniApp.introduction}</p>
       </div>
-      <div
-        className="rounded-lg border border-border p-4"
-      >
+      <div className="rounded-lg border border-border p-4">
         <Component />
       </div>
     </div>
