@@ -21,6 +21,7 @@ You are creating a new mini-app for UX Quest, a UX problem detection training ga
    - `app/mini-apps/product-table-bulk-delete.tsx` — lists, tiny click targets
    - `app/mini-apps/product-form-collapsible.tsx` — forms, hidden validation errors
    - `app/mini-apps/monitoring-dashboard.tsx` — dataviz, low contrast
+   - `app/mini-apps/bookstore-admin.tsx` — multi-view CRUD with Routes/Outlet, dark mode toast contrast bug
 
 4. Check available shadcn/ui components:
    - `app/components/ui/` — see what's already installed
@@ -109,6 +110,43 @@ Mark the flaw with a `// BUG:` comment in the code explaining what it is.
 - Search that doesn't debounce (results flash on every keystroke)
 - Confirmation dialog with "Yes/No" instead of descriptive action labels
 - Progress indicator that doesn't reflect actual progress
+
+### Multi-view mini-apps (routing)
+
+For mini-apps with multiple views (e.g. list → detail → edit), use React Router's `<Routes>` and `<Outlet>` instead of search params or manual state switching. The parent routes (`game/*` and `mini-app/:id/*`) already have `/*` wildcards to support this.
+
+**Pattern** (see `bookstore-admin.tsx` for a full example):
+
+1. **Store context**: Create a context to share state (data, setters, toast) across route components.
+
+2. **Layout route with `<Outlet>`**: Use a layout route for shared chrome (breadcrumbs, section headers) that renders `<Outlet />` for child content:
+   ```tsx
+   <Routes>
+     <Route index element={<Navigate to="items" replace />} />
+     <Route path="items/*" element={<SectionLayout />}>
+       <Route index element={<ItemsList />} />
+       <Route path="new" element={<ItemCreate />} />
+       <Route path=":id" element={<ItemShow />} />
+       <Route path=":id/edit" element={<ItemEdit />} />
+     </Route>
+   </Routes>
+   ```
+
+3. **Absolute navigation via basePath**: Compute a `basePath` from `useParams` and `useLocation` in the root component, store it in the context, and use it for all navigation links (sidebar, breadcrumbs, post-save redirects):
+   ```tsx
+   const { "*": splat = "" } = useParams()
+   const location = useLocation()
+   const basePath = splat
+     ? location.pathname.slice(0, -splat.length).replace(/\/$/, "")
+     : location.pathname.replace(/\/$/, "")
+   // Then: nav(`${basePath}/items/${id}`)
+   ```
+
+4. **Route components use context**: Each route component calls `useStore()` for data and `useNavigate()` for navigation — no prop drilling needed.
+
+5. **Edit pages own their form state**: Initialize `formData` from the store based on `useParams()` `:id`, rather than requiring the caller to pre-populate state before navigating.
+
+6. **Use `<form>` elements**: Form pages should use `<form onSubmit>` with `type="submit"` buttons so browser form mechanics (submit on Enter) work. Cancel buttons need `type="button"`.
 
 ### Rendering context
 

@@ -34,5 +34,6 @@ Mini-apps must not introduce unintended UX issues — the only flaw should be th
 
 - React Router 7 (SPA mode, SSR disabled), React 19, TypeScript, Vite
 - Tailwind CSS 4 + shadcn/ui (base-nova style, Base UI primitives)
+- Icons: use `lucide-react` — never write inline SVGs by hand
 - Path alias: `~/` maps to `./app/`
 - UI language: English
