@@ -6,6 +6,7 @@ import { productFormCollapsible } from "./product-form-collapsible"
 import { productTable } from "./product-table"
 import { productTableBulkDelete } from "./product-table-bulk-delete"
 import { shirtCatalogFilter } from "./shirt-catalog-filter"
+import { loginForm } from "./login-form"
 
 export const miniApps: MiniAppDefinition[] = [
   editableProfile,
@@ -15,5 +16,6 @@ export const miniApps: MiniAppDefinition[] = [
   monitoringDashboard,
   contactTableEdit,
   shirtCatalogFilter,
+  loginForm,
   // Add new mini-app definitions here
 ]

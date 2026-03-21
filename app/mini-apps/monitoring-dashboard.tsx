@@ -580,7 +580,7 @@ export const monitoringDashboard: MiniAppDefinition = {
   introduction:
     "An industrial equipment monitoring dashboard showing metrics about station performance, individual units, diagnostics, and maintenance status.",
   category: "dataviz",
-  difficulty: "medium",
+  difficulty: "easy",
   component: MonitoringDashboard,
   expectedAnswers: [
     "The metric labels, units, and chart elements have very low contrast against the dark background, making them hard to read.",

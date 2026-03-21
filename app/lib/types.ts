@@ -9,6 +9,7 @@ export type Category =
   | "interaction"
   | "lists"
   | "dataviz"
+  | "security"
 
 export type Difficulty = "easy" | "medium" | "hard"
 
