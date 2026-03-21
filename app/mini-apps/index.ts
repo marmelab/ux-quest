@@ -7,6 +7,7 @@ import { productTable } from "./product-table"
 import { productTableBulkDelete } from "./product-table-bulk-delete"
 import { shirtCatalogFilter } from "./shirt-catalog-filter"
 import { loginForm } from "./login-form"
+import { bookstoreAdmin } from "./bookstore-admin"
 
 export const miniApps: MiniAppDefinition[] = [
   editableProfile,
@@ -17,5 +18,6 @@ export const miniApps: MiniAppDefinition[] = [
   contactTableEdit,
   shirtCatalogFilter,
   loginForm,
+  bookstoreAdmin,
   // Add new mini-app definitions here
 ]
