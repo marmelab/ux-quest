@@ -39,9 +39,7 @@ export default function Home() {
           </p>
         </div>
         {error && (
-          <p className="text-sm text-red-600">
-            Model loading error: {error}
-          </p>
+          <p className="text-sm text-red-600">Model loading error: {error}</p>
         )}
         <Button size="lg" onClick={handleStart} disabled={loading}>
           {loading ? "Loading model..." : "Start Training"}
