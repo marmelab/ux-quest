@@ -22,8 +22,7 @@ export function MiniAppPlayer({ miniApp }: MiniAppPlayerProps) {
       <div className="flex flex-col gap-1">
         <div className="flex items-center gap-2">
           <h2 className="text-lg font-medium">{miniApp.name}</h2>
-          <Badge variant="outline">{miniApp.category}</Badge>
-          <Badge variant={difficultyVariant[miniApp.difficulty]}>
+<Badge variant={difficultyVariant[miniApp.difficulty]}>
             {miniApp.difficulty}
           </Badge>
         </div>
