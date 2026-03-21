@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { useNavigate } from "react-router"
 import { useGame } from "~/hooks/use-game"
 import { useSemanticSimilarity } from "~/hooks/use-semantic-similarity"
@@ -7,18 +7,19 @@ import { AnswerFeedback } from "./answer-feedback"
 import { AnswerInput } from "./answer-input"
 import { MiniAppPlayer } from "./mini-app-player"
 import { ProgressBar } from "./progress-bar"
-import { Button } from "~/components/ui/button"
-
 export function GameSession() {
   const { state, startGame, submitAnswer, nextAfterReview, maxAttempts } =
     useGame()
-  const {
-    isLoading: modelLoading,
-    error: modelError,
-    compare,
-  } = useSemanticSimilarity()
+  const { compare } = useSemanticSimilarity()
   const navigate = useNavigate()
   const [isSubmitting, setIsSubmitting] = useState(false)
+
+  // Auto-start the game on mount
+  useEffect(() => {
+    if (state.phase === "idle") {
+      startGame()
+    }
+  }, [state.phase, startGame])
 
   const handleSubmit = useCallback(
     async (text: string) => {
@@ -57,32 +58,9 @@ export function GameSession() {
     nextAfterReview,
   ])
 
-  // Idle phase — start screen
+  // Idle phase — auto-starting, show nothing
   if (state.phase === "idle") {
-    return (
-      <div className="flex min-h-svh items-center justify-center p-6">
-        <div className="flex flex-col items-center gap-4 text-center">
-          <h1 className="text-2xl font-bold">Ready to play?</h1>
-          <p className="max-w-md text-sm text-muted-foreground">
-            You will examine {state.selectedMiniApps.length || 10}{" "}
-            mini-applications and try to detect the UX problem in each one.
-          </p>
-          {modelLoading && (
-            <p className="text-sm text-muted-foreground">
-              Loading analysis model...
-            </p>
-          )}
-          {modelError && (
-            <p className="text-sm text-red-600">
-              Model loading error: {modelError}
-            </p>
-          )}
-          <Button onClick={startGame} disabled={modelLoading}>
-            {modelLoading ? "Loading..." : "Start"}
-          </Button>
-        </div>
-      </div>
-    )
+    return null
   }
 
   // Finished phase — redirect to results

@@ -10,6 +10,10 @@ let tokenizer: any = null
 let model: any = null
 let loadingPromise: Promise<void> | null = null
 
+export function isModelReady(): boolean {
+  return model !== null
+}
+
 export async function loadModel(): Promise<void> {
   if (model) return
   if (loadingPromise) return loadingPromise
