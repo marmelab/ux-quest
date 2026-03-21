@@ -1,11 +1,11 @@
 ---
 name: create-mini-app
-description: Create a new mini-app for the Charlux UX problem detection game. Use this skill whenever the user asks to add a mini-app, create a new challenge, build a new exercise, or add a UX problem scenario to the game. Also trigger when the user says things like "let's add a new one", "create another mini-app", "new challenge", or describes a UI they want to turn into a mini-app with a deliberate flaw.
+description: Create a new mini-app for the UX Quest UX problem detection game. Use this skill whenever the user asks to add a mini-app, create a new challenge, build a new exercise, or add a UX problem scenario to the game. Also trigger when the user says things like "let's add a new one", "create another mini-app", "new challenge", or describes a UI they want to turn into a mini-app with a deliberate flaw.
 ---
 
 # Create Mini-App
 
-You are creating a new mini-app for Charlux, a UX problem detection training game. Users examine mini-applications, spot the ONE deliberate UX flaw, and describe it in text. An ML model scores their answer via semantic similarity.
+You are creating a new mini-app for UX Quest, a UX problem detection training game. Users examine mini-applications, spot the ONE deliberate UX flaw, and describe it in text. An ML model scores their answer via semantic similarity.
 
 ## Before you start
 
