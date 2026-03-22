@@ -5,10 +5,7 @@ import { useEffect, useRef, useState } from "react"
  * an ease-out curve (starts fast, slows near the end).
  * Duration is capped at `maxDuration` ms.
  */
-export function useAnimatedNumber(
-  target: number,
-  maxDuration = 2000
-): number {
+export function useAnimatedNumber(target: number, maxDuration = 2000): number {
   const [display, setDisplay] = useState(target)
   const prevTarget = useRef(target)
 

@@ -21,6 +21,19 @@ npm install
 npm run dev
 ```
 
+Then open [http://localhost:5173/](http://localhost:5173/).
+
+## Docker
+
+To build and run the app in a Docker container:
+
+```bash
+docker build -t ux-quest .
+docker run -p 3000:3000 ux-quest
+```
+
+Then open [http://localhost:3000/ux-quest/](http://localhost:3000/ux-quest/).
+
 ## Contributing
 
 If you have an idea for a mini-app or want to help with development, that's awesome!

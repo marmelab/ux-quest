@@ -77,11 +77,7 @@ function LoginPage({
         </p>
       </div>
 
-      <form
-        onSubmit={handleSubmit}
-        noValidate
-        className="flex flex-col gap-4"
-      >
+      <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
         {errors.form && (
           <div className="rounded-md border border-destructive/30 bg-destructive/10 px-3 py-2 text-sm text-destructive">
             {errors.form}
@@ -249,11 +245,7 @@ function ForgotPasswordPage({
         </p>
       </div>
 
-      <form
-        onSubmit={handleSubmit}
-        noValidate
-        className="flex flex-col gap-4"
-      >
+      <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
         <div className="flex flex-col gap-1.5">
           <Label htmlFor="pulse-forgot-email">Email address</Label>
           <Input

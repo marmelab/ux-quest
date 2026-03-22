@@ -3,12 +3,7 @@ import { BookOpen, ExternalLink, Home, RotateCcw } from "lucide-react"
 import { Footer } from "~/components/footer"
 import { ScoreBoard } from "~/components/game/score-board"
 import { Button } from "~/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "~/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card"
 import { computeMaxScore, computeTotalScore } from "~/lib/scoring"
 import { getAllMiniApps } from "~/lib/mini-app-registry"
 import type { TestResult } from "~/lib/types"
@@ -37,20 +32,17 @@ const UX_RESOURCES = [
   {
     name: "Interaction Design Foundation",
     url: "https://www.interaction-design.org/",
-    description:
-      "Structured curriculum for a progressive learning path.",
+    description: "Structured curriculum for a progressive learning path.",
   },
   {
     name: "UX Collective",
     url: "https://uxdesign.cc/",
-    description:
-      "Practitioner writing on real-world UX problems and trends.",
+    description: "Practitioner writing on real-world UX problems and trends.",
   },
   {
     name: "Google UX Design Certificate",
     url: "https://www.coursera.org/professional-certificates/google-ux-design",
-    description:
-      "Guided, hands-on introduction with a certificate at the end.",
+    description: "Guided, hands-on introduction with a certificate at the end.",
   },
 ]
 
@@ -107,78 +99,78 @@ export default function ResultsRoute() {
 
   return (
     <>
-    <div className="flex flex-1 justify-center p-6 py-16">
-      <div className="flex w-full max-w-md flex-col items-center gap-8">
-        {/* Score section */}
-        <Card className="w-full">
-          <CardContent className="flex flex-col items-center">
-            <ScoreBoard
-              results={isTestMode ? undefined : results}
-              overrideScore={isTestMode ? totalScore : undefined}
-              overrideMax={isTestMode ? maxScore : undefined}
-            />
-            <p className="mt-2 text-center text-sm font-medium">
-              {getVerdict(ratio)}
+      <div className="flex flex-1 justify-center p-6 py-16">
+        <div className="flex w-full max-w-md flex-col items-center gap-8">
+          {/* Score section */}
+          <Card className="w-full">
+            <CardContent className="flex flex-col items-center">
+              <ScoreBoard
+                results={isTestMode ? undefined : results}
+                overrideScore={isTestMode ? totalScore : undefined}
+                overrideMax={isTestMode ? maxScore : undefined}
+              />
+              <p className="mt-2 text-center text-sm font-medium">
+                {getVerdict(ratio)}
+              </p>
+            </CardContent>
+          </Card>
+
+          {/* Actions section */}
+          <div className="flex flex-col items-center gap-3">
+            <div className="flex gap-3">
+              <Button onClick={() => navigate("/game")}>
+                <RotateCcw className="size-4" />
+                Play Again
+              </Button>
+              <Button variant="outline" onClick={() => navigate("/")}>
+                <Home className="size-4" />
+                Home
+              </Button>
+            </div>
+            <p className="text-center text-sm text-muted-foreground">
+              Each game picks mini-apps at random — play again to
+              <br />
+              discover new challenges!
             </p>
-          </CardContent>
-        </Card>
-
-        {/* Actions section */}
-        <div className="flex flex-col items-center gap-3">
-          <div className="flex gap-3">
-            <Button onClick={() => navigate("/game")}>
-              <RotateCcw className="size-4" />
-              Play Again
-            </Button>
-            <Button variant="outline" onClick={() => navigate("/")}>
-              <Home className="size-4" />
-              Home
-            </Button>
           </div>
-          <p className="text-center text-sm text-muted-foreground">
-            Each game picks mini-apps at random — play again to
-            <br />
-            discover new challenges!
-          </p>
-        </div>
 
-        {/* Resources section */}
-        <Card className="w-full">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <BookOpen className="size-4" />
-              Learn more about UX
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ul className="space-y-3">
-              {UX_RESOURCES.map((r) => (
-                <li key={r.url}>
-                  <a
-                    href={r.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-start gap-2"
-                  >
-                    <ExternalLink className="mt-0.5 size-3.5 shrink-0 text-muted-foreground transition-colors group-hover:text-foreground" />
-                    <span>
-                      <span className="font-medium underline decoration-muted-foreground/40 underline-offset-2 transition-colors group-hover:decoration-foreground">
-                        {r.name}
+          {/* Resources section */}
+          <Card className="w-full">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <BookOpen className="size-4" />
+                Learn more about UX
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ul className="space-y-3">
+                {UX_RESOURCES.map((r) => (
+                  <li key={r.url}>
+                    <a
+                      href={r.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex items-start gap-2"
+                    >
+                      <ExternalLink className="mt-0.5 size-3.5 shrink-0 text-muted-foreground transition-colors group-hover:text-foreground" />
+                      <span>
+                        <span className="font-medium underline decoration-muted-foreground/40 underline-offset-2 transition-colors group-hover:decoration-foreground">
+                          {r.name}
+                        </span>
+                        <span className="text-muted-foreground">
+                          {" "}
+                          — {r.description}
+                        </span>
                       </span>
-                      <span className="text-muted-foreground">
-                        {" "}
-                        — {r.description}
-                      </span>
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </CardContent>
-        </Card>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
+        </div>
       </div>
-    </div>
-    <Footer />
+      <Footer />
     </>
   )
 }

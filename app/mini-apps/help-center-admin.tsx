@@ -243,40 +243,36 @@ function ArticlesList() {
         </TableHeader>
         <TableBody>
           {articles.map((article) => {
-              const cat = categories.find((c) => c.id === article.categoryId)
-              return (
-                <TableRow key={article.id}>
-                  <TableCell className="font-medium">{article.title}</TableCell>
-                  <TableCell className={mutedCls}>{cat?.name}</TableCell>
-                  <TableCell>
-                    <Badge
-                      variant={
-                        article.status === "published"
-                          ? "default"
-                          : "secondary"
-                      }
-                      className="text-[10px]"
-                    >
-                      {article.status}
-                    </Badge>
-                  </TableCell>
-                  <TableCell className="text-right">
-                    <Button
-                      variant="outline"
-                      size="icon-sm"
-                      onClick={() =>
-                        nav(`${basePath}/articles/${article.id}`)
-                      }
-                      aria-label="View article"
-                    >
-                      <EyeIcon size={13} />
-                    </Button>
-                  </TableCell>
-                </TableRow>
-              )
-            })}
-          </TableBody>
-        </Table>
+            const cat = categories.find((c) => c.id === article.categoryId)
+            return (
+              <TableRow key={article.id}>
+                <TableCell className="font-medium">{article.title}</TableCell>
+                <TableCell className={mutedCls}>{cat?.name}</TableCell>
+                <TableCell>
+                  <Badge
+                    variant={
+                      article.status === "published" ? "default" : "secondary"
+                    }
+                    className="text-[10px]"
+                  >
+                    {article.status}
+                  </Badge>
+                </TableCell>
+                <TableCell className="text-right">
+                  <Button
+                    variant="outline"
+                    size="icon-sm"
+                    onClick={() => nav(`${basePath}/articles/${article.id}`)}
+                    aria-label="View article"
+                  >
+                    <EyeIcon size={13} />
+                  </Button>
+                </TableCell>
+              </TableRow>
+            )
+          })}
+        </TableBody>
+      </Table>
     </div>
   )
 }
@@ -331,9 +327,7 @@ function ArticleShow() {
         ).map(([label, value]) => (
           <div key={label} className={`p-3 ${detailBox}`}>
             <div className={detailLabel}>{label}</div>
-            <div className={`text-[13px] ${textCls} capitalize`}>
-              {value}
-            </div>
+            <div className={`text-[13px] ${textCls} capitalize`}>{value}</div>
           </div>
         ))}
       </div>
@@ -354,14 +348,8 @@ function ArticleShow() {
 }
 
 function ArticleCreate() {
-  const {
-    basePath,
-    setArticles,
-    nextId,
-    setNextId,
-    showToast,
-    categories,
-  } = useStore()
+  const { basePath, setArticles, nextId, setNextId, showToast, categories } =
+    useStore()
   const nav = useNavigate()
   const [data, setData] = useState<Record<string, string>>({})
   const onChange = (k: string, v: string) =>
@@ -390,9 +378,7 @@ function ArticleCreate() {
         nav(`${basePath}/articles`)
       }}
     >
-      <div className={`text-sm font-semibold ${textCls} mb-4`}>
-        New Article
-      </div>
+      <div className={`text-sm font-semibold ${textCls} mb-4`}>New Article</div>
       <div className="flex flex-col gap-3">
         <div>
           <span className={labelCls}>Title</span>
@@ -483,7 +469,7 @@ function ArticleEdit() {
           excerpt: article.excerpt,
           content: article.content,
         }
-      : {},
+      : {}
   )
   const onChange = (k: string, v: string) =>
     setData((prev) => ({ ...prev, [k]: v }))
@@ -507,8 +493,8 @@ function ArticleEdit() {
                   content: data["content"] || a.content,
                   updatedAt: "Mar 22, 2026",
                 }
-              : a,
-          ),
+              : a
+          )
         )
         showToast("Article updated")
         nav(`${basePath}/articles`)
@@ -636,8 +622,14 @@ function CategoriesList() {
 }
 
 function CategoryShow() {
-  const { basePath, categories, articles, setArticles, setCategories, showToast } =
-    useStore()
+  const {
+    basePath,
+    categories,
+    articles,
+    setArticles,
+    setCategories,
+    showToast,
+  } = useStore()
   const { id } = useParams<{ id: string }>()
   const nav = useNavigate()
   const cat = categories.find((c) => c.id === Number(id))
@@ -667,8 +659,8 @@ function CategoryShow() {
             onClick={() => {
               setArticles((prev) =>
                 prev.map((a) =>
-                  a.categoryId === cat.id ? { ...a, categoryId: null } : a,
-                ),
+                  a.categoryId === cat.id ? { ...a, categoryId: null } : a
+                )
               )
               setCategories((prev) => prev.filter((c) => c.id !== cat.id))
               showToast("Category deleted")
@@ -698,7 +690,7 @@ function CategoryShow() {
             {catArticles.map((a) => (
               <div
                 key={a.id}
-                className={`flex cursor-pointer items-center justify-between px-3 py-2 ${detailBox} hover:bg-zinc-100 dark:hover:bg-[#252525] transition-colors`}
+                className={`flex cursor-pointer items-center justify-between px-3 py-2 ${detailBox} transition-colors hover:bg-zinc-100 dark:hover:bg-[#252525]`}
                 onClick={() => nav(`${basePath}/articles/${a.id}`)}
               >
                 <div>
@@ -808,9 +800,7 @@ function CategoryEdit() {
   const catId = Number(id)
   const cat = categories.find((c) => c.id === catId)
   const [data, setData] = useState<Record<string, string>>(
-    cat
-      ? { name: cat.name, slug: cat.slug, description: cat.description }
-      : {},
+    cat ? { name: cat.name, slug: cat.slug, description: cat.description } : {}
   )
   const onChange = (k: string, v: string) =>
     setData((prev) => ({ ...prev, [k]: v }))
@@ -830,8 +820,8 @@ function CategoryEdit() {
                   slug: data["slug"] || c.slug,
                   description: data["description"] || c.description,
                 }
-              : c,
-          ),
+              : c
+          )
         )
         showToast("Category updated")
         nav(`${basePath}/categories`)
@@ -949,9 +939,7 @@ function SectionLayout({
                 <>
                   <span
                     className="cursor-pointer"
-                    onClick={() =>
-                      nav(`${basePath}/${section}/${parts[0]}`)
-                    }
+                    onClick={() => nav(`${basePath}/${section}/${parts[0]}`)}
                   >
                     {section === "articles"
                       ? (articles.find((a) => a.id === Number(parts[0]))
@@ -1001,10 +989,7 @@ function BreadcrumbNavApp() {
   const showToast = (message: string) => {
     const id = Date.now()
     setToasts((prev) => [...prev, { id, message }])
-    setTimeout(
-      () => setToasts((prev) => prev.filter((t) => t.id !== id)),
-      3000,
-    )
+    setTimeout(() => setToasts((prev) => prev.filter((t) => t.id !== id)), 3000)
   }
 
   const nav = useNavigate()
