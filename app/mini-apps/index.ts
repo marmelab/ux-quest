@@ -12,6 +12,7 @@ import { salesChart } from "./sales-chart"
 import { contactSheet } from "./contact-sheet"
 import { productCatalogDetail } from "./product-catalog-detail"
 import { loginFormPulse } from "./login-form-pulse"
+import { breadcrumbNav } from "./help-center-admin"
 
 export const miniApps: MiniAppDefinition[] = [
   editableProfile,
@@ -27,5 +28,6 @@ export const miniApps: MiniAppDefinition[] = [
   contactSheet,
   productCatalogDetail,
   loginFormPulse,
+  breadcrumbNav,
   // Add new mini-app definitions here
 ]
