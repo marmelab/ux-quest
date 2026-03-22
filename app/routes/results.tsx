@@ -1,5 +1,6 @@
 import { useLocation, useNavigate, useSearchParams } from "react-router"
 import { BookOpen, ExternalLink, Home, RotateCcw } from "lucide-react"
+import { Footer } from "~/components/footer"
 import { ScoreBoard } from "~/components/game/score-board"
 import { Button } from "~/components/ui/button"
 import {
@@ -75,7 +76,7 @@ export default function ResultsRoute() {
   const isTestMode = testParams != null
   if (!isTestMode && results.length === 0) {
     return (
-      <div className="flex min-h-svh items-center justify-center p-6">
+      <div className="flex flex-1 items-center justify-center p-6">
         <div className="flex flex-col items-center gap-4">
           <p className="text-muted-foreground">No results to display.</p>
           <Button onClick={() => navigate("/")}>
@@ -105,7 +106,8 @@ export default function ResultsRoute() {
   const ratio = maxScore > 0 ? totalScore / maxScore : 0
 
   return (
-    <div className="flex min-h-svh justify-center p-6 py-16">
+    <>
+    <div className="flex flex-1 justify-center p-6 py-16">
       <div className="flex w-full max-w-md flex-col items-center gap-8">
         {/* Score section */}
         <Card className="w-full">
@@ -176,5 +178,7 @@ export default function ResultsRoute() {
         </Card>
       </div>
     </div>
+    <Footer />
+    </>
   )
 }

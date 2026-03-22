@@ -81,7 +81,7 @@ export function GameSession() {
     : null
 
   return (
-    <div className="flex min-h-svh justify-center p-6">
+    <div className="flex flex-1 justify-center p-6">
       <div className="flex w-full max-w-2xl flex-col gap-6">
         <ProgressBar
           current={state.currentIndex + 1}

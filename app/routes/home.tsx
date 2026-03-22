@@ -1,6 +1,7 @@
 import { Monitor } from "lucide-react"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router"
+import { Footer } from "~/components/footer"
 import { Button } from "~/components/ui/button"
 import { useIsMobile } from "~/hooks/use-mobile"
 import { isModelReady, loadModel } from "~/lib/semantic-similarity.client"
@@ -40,7 +41,7 @@ export default function Home() {
 
   if (isMobile) {
     return (
-      <div className="flex min-h-svh items-center justify-center p-6">
+      <div className="flex flex-1 items-center justify-center p-6">
         <div className="flex max-w-xs flex-col items-center gap-4 text-center">
           <Monitor className="size-10 text-muted-foreground" />
           <h1 className="text-xl font-bold">Desktop Only</h1>
@@ -54,22 +55,25 @@ export default function Home() {
   }
 
   return (
-    <div className="flex min-h-svh items-center justify-center p-6">
-      <div className="flex max-w-md flex-col items-center gap-6 text-center">
-        <div className="flex flex-col gap-2">
-          <h1 className="text-3xl font-bold">UX Quest</h1>
-          <p className="text-sm leading-relaxed text-muted-foreground">
-            Examine mini-applications,<br />
-            identify the UX flaw in each one,<br />and train yourself to spot them in the wild!
-          </p>
+    <>
+      <div className="flex flex-1 items-center justify-center p-6">
+        <div className="flex max-w-md flex-col items-center gap-6 text-center">
+          <div className="flex flex-col gap-2">
+            <h1 className="text-3xl font-bold">UX Quest</h1>
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              Examine mini-applications,<br />
+              identify the UX flaw in each one,<br />and train yourself to spot them in the wild!
+            </p>
+          </div>
+          {error && (
+            <p className="text-sm text-red-600">Model loading error: {error}</p>
+          )}
+          <Button size="lg" onClick={handleStart} disabled={loading}>
+            {loading ? "Loading model..." : "Start Training"}
+          </Button>
         </div>
-        {error && (
-          <p className="text-sm text-red-600">Model loading error: {error}</p>
-        )}
-        <Button size="lg" onClick={handleStart} disabled={loading}>
-          {loading ? "Loading model..." : "Start Training"}
-        </Button>
       </div>
-    </div>
+      <Footer />
+    </>
   )
 }

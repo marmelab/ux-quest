@@ -2,6 +2,11 @@
   "name": "ux-quest",
   "private": true,
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marmelab/ux-quest.git"
+  },
+  "homepage": "https://github.com/marmelab/ux-quest",
   "scripts": {
     "build": "react-router build && cp build/client/index.html build/client/404.html",
     "dev": "react-router dev",

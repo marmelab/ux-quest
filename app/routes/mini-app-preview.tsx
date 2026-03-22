@@ -7,7 +7,7 @@ export default function MiniAppPreviewRoute() {
 
   if (!miniApp) {
     return (
-      <div className="flex min-h-screen items-center justify-center">
+      <div className="flex flex-1 items-center justify-center">
         <p className="text-muted-foreground">
           Mini-app <code>{id}</code> not found.
         </p>
