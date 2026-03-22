@@ -11,6 +11,7 @@ import { bookstoreAdmin } from "./bookstore-admin"
 import { salesChart } from "./sales-chart"
 import { contactSheet } from "./contact-sheet"
 import { productCatalogDetail } from "./product-catalog-detail"
+import { loginFormPulse } from "./login-form-pulse"
 
 export const miniApps: MiniAppDefinition[] = [
   editableProfile,
@@ -25,5 +26,6 @@ export const miniApps: MiniAppDefinition[] = [
   salesChart,
   contactSheet,
   productCatalogDetail,
+  loginFormPulse,
   // Add new mini-app definitions here
 ]
