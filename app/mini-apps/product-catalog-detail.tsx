@@ -541,7 +541,7 @@ export const productCatalogDetail: MiniAppDefinition = {
   introduction:
     "An online electronics store with a product listing and detail pages. The checkout is not implemented.",
   category: "navigation",
-  difficulty: "easy",
+  difficulty: "hard",
   component: ProductCatalogDetail,
   expectedAnswers: [
     "The browser back button doesn't return to the product list after viewing a product detail page.",

@@ -613,7 +613,7 @@ export const loginForm: MiniAppDefinition = {
   introduction:
     "The classic sign in / sign up flow. Valid credentials: sarah.chen@acme.com / password123.",
   category: "security",
-  difficulty: "easy",
+  difficulty: "medium",
   component: LoginForm,
   expectedAnswers: [
     "When login fails, the form fields are cleared, forcing the user to retype their email and password.",
