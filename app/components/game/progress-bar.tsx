@@ -1,4 +1,5 @@
 import { Banana } from "lucide-react"
+import { useAnimatedNumber } from "~/hooks/use-animated-number"
 import type { Difficulty } from "~/lib/types"
 
 interface ProgressBarProps {
@@ -22,15 +23,16 @@ export function ProgressBar({
   perDifficulty,
   score,
 }: ProgressBarProps) {
+  const animatedScore = useAnimatedNumber(score)
   return (
     <div className="flex flex-col gap-2">
       <div className="flex items-center justify-between text-sm">
         <span className="font-medium">
           Question {current} / {total}
         </span>
-        <span className="flex items-center gap-1.5 rounded-full border-2 border-border px-3 py-0.5 font-semibold">
+        <span className="flex items-center gap-1.5 rounded-full border-2 border-border px-3 py-0.5 font-semibold tabular-nums">
           <Banana className="size-4 text-amber-500" />
-          {score.toLocaleString()}
+          {animatedScore.toLocaleString()}
         </span>
       </div>
       <div className="flex gap-1">
