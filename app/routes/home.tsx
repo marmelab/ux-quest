@@ -1,17 +1,22 @@
+import { Monitor } from "lucide-react"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router"
 import { Button } from "~/components/ui/button"
+import { useIsMobile } from "~/hooks/use-mobile"
 import { isModelReady, loadModel } from "~/lib/semantic-similarity.client"
 
 export default function Home() {
   const navigate = useNavigate()
+  const isMobile = useIsMobile()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  // Preload model in the background as soon as the home page renders
+  // Preload model in the background — only on desktop
   useEffect(() => {
-    loadModel().catch(() => {})
-  }, [])
+    if (isMobile === false) {
+      loadModel().catch(() => {})
+    }
+  }, [isMobile])
 
   function handleStart() {
     if (isModelReady()) {
@@ -26,6 +31,26 @@ export default function Home() {
         setError(e.message)
         setLoading(false)
       })
+  }
+
+  // Wait for client-side check before rendering
+  if (isMobile === undefined) {
+    return null
+  }
+
+  if (isMobile) {
+    return (
+      <div className="flex min-h-svh items-center justify-center p-6">
+        <div className="flex max-w-xs flex-col items-center gap-4 text-center">
+          <Monitor className="size-10 text-muted-foreground" />
+          <h1 className="text-xl font-bold">Desktop Only</h1>
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            UX Quest requires a larger screen to display the mini-applications
+            properly. Please open this site on a desktop or laptop computer.
+          </p>
+        </div>
+      </div>
+    )
   }
 
   return (
