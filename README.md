@@ -4,7 +4,7 @@ UX Quest is a UX problem detection training game. Users examine mini-application
 
 Play the game at [https://marmelab.com/ux-quest/](https://marmelab.com/ux-quest/).
 
-<img width="756" height="764" alt="ux-quest" src="https://github.com/user-attachments/assets/4c33b125-6f7a-4a83-8619-eac4865f9092" />
+<img width="1084" height="542" alt="ux-quest" src="https://github.com/user-attachments/assets/6a875001-476e-48b8-aa2f-e5b4a330ecb8" />
 
 ## Motivation
 
