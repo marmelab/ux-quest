@@ -236,6 +236,7 @@ export const salesChart: MiniAppDefinition = {
     "Tooltips near the edges of the graph get cut off because the container clips overflowing content.",
     "When hovering on December data points, the tooltip is cropped by the chart boundary.",
     "The chart container hides part of the tooltip when it would extend beyond the chart area.",
+    "The info modal can go out of the screen bounds.",
   ],
   wrongAnswers: [
     "The chart lines are hard to distinguish from each other.",

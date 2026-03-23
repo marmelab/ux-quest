@@ -73,7 +73,7 @@ export default function Home() {
           {error && (
             <p className="text-sm text-red-600">Model loading error: {error}</p>
           )}
-          <Button size="lg" onClick={handleStart} disabled={loading}>
+          <Button size="lg" onClick={handleStart} disabled={loading} className="hover:scale-105 transition-transform duration-150 cursor-pointer">
             {loading ? "Loading model..." : "Start Training"}
           </Button>
         </div>

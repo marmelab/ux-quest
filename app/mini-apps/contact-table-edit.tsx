@@ -209,10 +209,11 @@ function ContactTableEdit() {
                   Update the contact information for {editingContact.name}.
                 </DialogDescription>
               </DialogHeader>
+              <form onSubmit={(e) => { e.preventDefault(); handleSave() }}>
               <div className="grid gap-3 py-1">
                 <div className="grid grid-cols-4 items-center gap-3">
                   <Label className="justify-end" htmlFor="edit-name">
-                    Name
+                    Name *
                   </Label>
                   <Input
                     id="edit-name"
@@ -223,7 +224,7 @@ function ContactTableEdit() {
                 </div>
                 <div className="grid grid-cols-4 items-start gap-3">
                   <Label className="mt-2 justify-end" htmlFor="edit-email">
-                    Email
+                    Email *
                   </Label>
                   <div className="col-span-3">
                     <Input
@@ -280,6 +281,7 @@ function ContactTableEdit() {
               </div>
               <DialogFooter>
                 <Button
+                  type="button"
                   variant="outline"
                   onClick={() => {
                     setDialogOpen(false)
@@ -288,8 +290,9 @@ function ContactTableEdit() {
                 >
                   Cancel
                 </Button>
-                <Button onClick={handleSave}>Save changes</Button>
+                <Button type="submit">Save changes</Button>
               </DialogFooter>
+              </form>
             </>
           )}
         </DialogContent>

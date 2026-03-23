@@ -345,6 +345,7 @@ export const productTable: MiniAppDefinition = {
     "The page doesn't reset when the data changes — sorting or filtering keeps you on the same page number.",
     "When you filter the results down, you might see an empty page because the pagination wasn't reset.",
     "Sorting and filtering should bring the user back to page 1 but they don't.",
+    "Searching when on another page than page 1 shows no results because search doesn't reset to page 1.",
   ],
   wrongAnswers: [
     "The search is too slow or laggy.",

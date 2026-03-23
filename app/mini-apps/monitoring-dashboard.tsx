@@ -591,6 +591,8 @@ export const monitoringDashboard: MiniAppDefinition = {
     "The metric labels and data visualizations have insufficient contrast, making it hard to understand what each value represents.",
     "The status indicators, chart colors, and small text all have poor contrast against the dark cards.",
     "Key information like metric names, units, and chart data is hard to read due to low contrast on the dark theme.",
+    "The grey levels used for text isn't distinct enough from the background, causing readability issues for units.",
+    "The info modal can go out of the screen bounds.",
   ],
   wrongAnswers: [
     "The tabs are confusing or don't work properly.",
