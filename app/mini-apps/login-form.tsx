@@ -640,6 +640,7 @@ export const loginForm: MiniAppDefinition = {
     "Failed login attempts erase the form inputs, making users retype their credentials entirely.",
     "The login error message appears but the form is emptied, so users lose what they typed.",
     "Both fields are reset on authentication failure instead of preserving the email address.",
+    "When I enter the wrong email and password combination, the input fields clear, but they shouldn't.",
   ],
   hint: "What happens when you enter wrong credentials?",
   wrongAnswers: [
