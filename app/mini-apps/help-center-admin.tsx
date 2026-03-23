@@ -160,7 +160,7 @@ function ArticleShow() {
           {article.title}
         </div>
         <div className={`text-[13px] ${mutedCls} mt-0.5`}>
-          {article.category} · Updated {article.updatedAt}
+          {article.category}
         </div>
       </div>
       <div className="grid grid-cols-3 gap-2.5">
