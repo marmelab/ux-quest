@@ -541,7 +541,7 @@ function MonitoringDashboard() {
                     {metric.value}
                     <span
                       className="ml-0.5 text-xs font-normal"
-                      style={{ color: "#3a3a3f" }}
+                      style={{ color: "#4a4a52" }}
                     >
                       {metric.unit}
                     </span>
@@ -583,16 +583,11 @@ export const monitoringDashboard: MiniAppDefinition = {
   difficulty: "easy",
   component: MonitoringDashboard,
   expectedAnswers: [
-    "The metric labels, units, and chart elements have very low contrast against the dark background, making them hard to read.",
-    "Some elements like labels, units, and status indicators lack sufficient contrast even though the main values are readable.",
-    "The secondary text — labels, units, and footer — blends into the dark background due to poor contrast.",
-    "Chart fills and status dots are nearly invisible because their colors are too close to the card background.",
-    "While the big numbers are readable, the supporting text (labels, units) and visualizations fail contrast requirements.",
-    "The metric labels and data visualizations have insufficient contrast, making it hard to understand what each value represents.",
-    "The status indicators, chart colors, and small text all have poor contrast against the dark cards.",
-    "Key information like metric names, units, and chart data is hard to read due to low contrast on the dark theme.",
+    "The metric units have very low contrast against the dark background, making them hard to read.",
+    "Some elements lack sufficient contrast even though the main values are readable.",
+    "The secondary text is too dark and blends into the dark background due to poor contrast.",
+    "While the big numbers are readable, the supporting text (labels, units) fail contrast requirements.",
     "The grey levels used for text isn't distinct enough from the background, causing readability issues for units.",
-    "The info modal can go out of the screen bounds.",
   ],
   wrongAnswers: [
     "The tabs are confusing or don't work properly.",
