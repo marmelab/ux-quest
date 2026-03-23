@@ -182,7 +182,7 @@ export const editableProfile: MiniAppDefinition = {
   difficulty: "medium",
   component: EditableProfile,
   expectedAnswers: [
-    "The font changes when editing a field. The input uses a different font than the display text.",
+    "The font changes when editing a field. This causes the fields below to shift position.",
     "The edit input has a different font family than the static text, causing a visual jump.",
     "When clicking to edit, the text switches to a different font, making the transition jarring.",
     "The font in edit mode doesn't match the font used in display mode.",
