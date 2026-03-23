@@ -15,19 +15,19 @@ import { loginFormPulse } from "./login-form-pulse"
 import { breadcrumbNav } from "./help-center-admin"
 
 export const miniApps: MiniAppDefinition[] = [
+  bookstoreAdmin,
+  breadcrumbNav,
+  contactSheet,
+  contactTableEdit,
   editableProfile,
+  loginForm,
+  loginFormPulse,
+  monitoringDashboard,
+  productCatalogDetail,
+  productFormCollapsible,
   productTable,
   productTableBulkDelete,
-  productFormCollapsible,
-  monitoringDashboard,
-  contactTableEdit,
-  shirtCatalog,
-  loginForm,
-  bookstoreAdmin,
   salesChart,
-  contactSheet,
-  productCatalogDetail,
-  loginFormPulse,
-  breadcrumbNav,
+  shirtCatalog,
   // Add new mini-app definitions here
 ]
