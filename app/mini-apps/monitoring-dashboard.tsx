@@ -473,7 +473,7 @@ function MonitoringDashboard() {
 
   return (
     <div
-      className="flex w-full flex-col gap-4 rounded-lg p-5 text-sm"
+      className="dark flex w-full flex-col gap-4 rounded-lg p-5 text-sm"
       style={{ backgroundColor: "#1a1a1f", color: "#8a8a94" }}
     >
       {/* Header */}
@@ -499,19 +499,13 @@ function MonitoringDashboard() {
 
       {/* Tabs */}
       <Tabs value={activeTab} onValueChange={(v) => v && setActiveTab(v)}>
-        <TabsList
-          variant="line"
-          className="gap-0 border-b"
-          style={{ borderColor: "#252528" }}
-        >
+        <TabsList className="gap-0">
           {tabs.map((tab) => (
             <TabsTrigger
               key={tab.id}
               value={tab.id}
-              className="px-3 py-1.5 text-xs font-medium"
-              style={{
-                color: activeTab === tab.id ? "#c8c8d0" : "#6a6a72",
-              }}
+              className="px-3 text-xs font-medium"
+              style={{ cursor: activeTab === tab.id ? "default" : "pointer" }}
             >
               {tab.label}
             </TabsTrigger>
