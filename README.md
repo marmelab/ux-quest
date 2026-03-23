@@ -6,7 +6,7 @@ Play the game at [https://marmelab.com/ux-quest/](https://marmelab.com/ux-quest/
 
 ## Motivation
 
-Developers often struggle to identify UX problems in their own work. And despite numerous learning resources and countless PR reviews, some remain blind to certain issues.
+Developers sometimes struggle to identify UX problems in their own work. The problem is becoming more pressing as coding agents take on more of the implementation work, but fail to address usability issues.
 
 A long time ago, François stumbled upon [Can't Unsee](https://cantunsee.space/), an in-browser design problem detection game. He found it was a fun way to improve his design skills. He imagined a similar game for UX, where user interaction is key, to help train his colleagues. However, building such a game proved difficult at the time.
 
