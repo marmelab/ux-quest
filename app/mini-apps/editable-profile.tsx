@@ -103,7 +103,7 @@ function EditableProfile() {
   ]
 
   return (
-    <div className="mx-auto max-w-md text-sm">
+    <div className="mx-auto max-w-md p-4 text-sm">
       {/* Header */}
       <div className="flex items-center gap-3 border-b pb-3">
         <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">

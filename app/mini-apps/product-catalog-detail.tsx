@@ -487,7 +487,7 @@ function ProductCatalogDetail() {
     : null
 
   return (
-    <div className="mx-auto flex max-w-2xl flex-col gap-4">
+    <div className="mx-auto flex max-w-2xl flex-col gap-4 p-4">
       {selectedProduct ? (
         <ProductDetail
           product={selectedProduct}

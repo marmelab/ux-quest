@@ -248,7 +248,7 @@ function ProductFormCollapsible() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="mx-auto flex max-w-lg flex-col gap-3 text-sm"
+      className="mx-auto flex max-w-lg flex-col gap-3 p-4 text-sm"
     >
       <div className="flex items-center justify-between">
         <h2 className="text-base font-semibold">Edit Product</h2>

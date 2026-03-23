@@ -473,7 +473,7 @@ function MonitoringDashboard() {
 
   return (
     <div
-      className="-m-4 flex w-[calc(100%+2rem)] flex-col gap-4 rounded-lg p-5 text-sm"
+      className="flex w-full flex-col gap-4 rounded-lg p-5 text-sm"
       style={{ backgroundColor: "#1a1a1f", color: "#8a8a94" }}
     >
       {/* Header */}

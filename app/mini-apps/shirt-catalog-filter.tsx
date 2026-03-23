@@ -590,7 +590,7 @@ function ShirtCatalogFilter() {
   }, [filters])
 
   return (
-    <div className="mx-auto flex max-w-2xl flex-col gap-4">
+    <div className="mx-auto flex max-w-2xl flex-col gap-4 p-4">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>

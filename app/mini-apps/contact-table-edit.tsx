@@ -147,7 +147,7 @@ function ContactTableEdit() {
   }
 
   return (
-    <div className="mx-auto flex max-w-2xl flex-col gap-3 text-sm">
+    <div className="mx-auto flex max-w-2xl flex-col gap-3 p-4 text-sm">
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-base font-medium">Contacts</h2>

@@ -327,11 +327,11 @@ function LoginFormPulse() {
 
   switch (page) {
     case "forgot-password":
-      return <ForgotPasswordPage onNavigate={setPage} />
+      return <div className="p-4"><ForgotPasswordPage onNavigate={setPage} /></div>
     case "dashboard":
-      return <DashboardPage email={userEmail} onLogout={handleLogout} />
+      return <div className="p-4"><DashboardPage email={userEmail} onLogout={handleLogout} /></div>
     default:
-      return <LoginPage onLogin={handleLogin} onNavigate={setPage} />
+      return <div className="p-4"><LoginPage onLogin={handleLogin} onNavigate={setPage} /></div>
   }
 }
 

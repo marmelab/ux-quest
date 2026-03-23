@@ -901,7 +901,7 @@ function BookstoreAdmin() {
 
   return (
     <StoreCtx.Provider value={store}>
-      <div className={`-m-6 w-[calc(100%+4rem)] ${isDark ? "dark" : ""}`}>
+      <div className={`w-full ${isDark ? "dark" : ""}`}>
         <div className="relative flex min-h-[420px] overflow-hidden rounded-lg bg-gray-100 text-gray-900 dark:bg-[#0d0d0d] dark:text-gray-200">
           {/* Toast notifications — BUG: dark mode toast has ~1.3:1 contrast ratio (bg #1e1e1e, text #353535) */}
           <div className="pointer-events-none absolute bottom-4 left-1/2 z-50 flex -translate-x-1/2 flex-col-reverse items-center gap-2">

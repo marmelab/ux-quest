@@ -30,7 +30,7 @@ function ContactSheet() {
   const [showTooltip, setShowTooltip] = useState(false)
 
   return (
-    <div className="mx-auto max-w-sm rounded-xl bg-zinc-900 text-zinc-100 shadow-xl">
+    <div className="mx-auto max-w-sm rounded-xl bg-zinc-900 p-4 text-zinc-100 shadow-xl">
       {/* Header */}
       <div className="flex items-center gap-4 border-b border-zinc-700 p-5">
         <div className="flex size-14 shrink-0 items-center justify-center rounded-full bg-indigo-600 text-lg font-semibold text-white">

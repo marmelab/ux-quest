@@ -222,7 +222,7 @@ function ProductTable() {
   const paged = sorted.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
 
   return (
-    <div className="mx-auto flex max-w-2xl flex-col gap-3 text-sm">
+    <div className="mx-auto flex max-w-2xl flex-col gap-3 p-4 text-sm">
       {/* Search */}
       <div className="relative">
         <input

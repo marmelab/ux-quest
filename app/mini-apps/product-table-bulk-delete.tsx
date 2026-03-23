@@ -132,7 +132,7 @@ function ProductTableBulkDelete() {
   const allSelected = products.length > 0 && selected.size === products.length
 
   return (
-    <div className="mx-auto flex max-w-2xl flex-col gap-3 text-sm">
+    <div className="mx-auto flex max-w-2xl flex-col gap-3 p-4 text-sm">
       {/* Toolbar */}
       <div className="flex items-center justify-between">
         <span className="text-xs text-muted-foreground">
