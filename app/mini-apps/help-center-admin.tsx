@@ -282,7 +282,7 @@ function HelpCenterAdminApp() {
 
   return (
     <div className="w-full">
-      <div className="relative flex min-h-[420px] flex-col overflow-hidden rounded-lg bg-gray-100 text-gray-900 dark:bg-[#0d0d0d] dark:text-gray-200">
+      <div className="relative flex min-h-105 flex-col overflow-hidden rounded-lg bg-gray-100 text-gray-900 dark:bg-[#0d0d0d] dark:text-gray-200">
         {/* App bar */}
         <div className="flex h-12 shrink-0 items-center justify-between border-b border-zinc-200 bg-white px-4 dark:border-neutral-800 dark:bg-[#111]">
           <div className="flex items-center gap-2">

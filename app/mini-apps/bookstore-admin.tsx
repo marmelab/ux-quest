@@ -205,7 +205,7 @@ function BooksList() {
                 <TableCell className={mutedCls}>{author?.name}</TableCell>
                 <TableCell>
                   <span
-                    className={`rounded border border-zinc-200 px-[7px] py-0.5 text-[11px] dark:border-neutral-800 ${mutedCls}`}
+                    className={`rounded border border-zinc-200 px-1.75 py-0.5 text-[11px] dark:border-neutral-800 ${mutedCls}`}
                   >
                     {book.genre}
                   </span>
@@ -902,13 +902,13 @@ function BookstoreAdmin() {
   return (
     <StoreCtx.Provider value={store}>
       <div className={`w-full ${isDark ? "dark" : ""}`}>
-        <div className="relative flex min-h-[420px] overflow-hidden rounded-lg bg-gray-100 text-gray-900 dark:bg-[#0d0d0d] dark:text-gray-200">
+        <div className="relative flex min-h-105 overflow-hidden rounded-lg bg-gray-100 text-gray-900 dark:bg-[#0d0d0d] dark:text-gray-200">
           {/* Toast notifications — BUG: dark mode toast has ~1.3:1 contrast ratio (bg #1e1e1e, text #353535) */}
           <div className="pointer-events-none absolute bottom-4 left-1/2 z-50 flex -translate-x-1/2 flex-col-reverse items-center gap-2">
             {toasts.map((toast) => (
               <div
                 key={toast.id}
-                className="flex min-w-[220px] items-center gap-2 rounded-lg border border-gray-300 bg-white px-3.5 py-2.5 text-[13px] font-medium text-gray-900 shadow-[0_4px_12px_rgba(0,0,0,0.1)] dark:border-[#252525] dark:bg-[#1e1e1e] dark:text-[#353535] dark:shadow-[0_4px_12px_rgba(0,0,0,0.4)]"
+                className="flex min-w-55 items-center gap-2 rounded-lg border border-gray-300 bg-white px-3.5 py-2.5 text-[13px] font-medium text-gray-900 shadow-[0_4px_12px_rgba(0,0,0,0.1)] dark:border-[#252525] dark:bg-[#1e1e1e] dark:text-[#353535] dark:shadow-[0_4px_12px_rgba(0,0,0,0.4)]"
               >
                 <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-green-500 text-[10px] text-white">
                   ✓
@@ -919,7 +919,7 @@ function BookstoreAdmin() {
           </div>
 
           {/* Sidebar */}
-          <div className="flex w-[120px] shrink-0 flex-col border-r border-zinc-200 bg-white dark:border-neutral-800 dark:bg-[#111]">
+          <div className="flex w-30 shrink-0 flex-col border-r border-zinc-200 bg-white dark:border-neutral-800 dark:bg-[#111]">
             <div className="border-b border-zinc-200 px-4 py-3.5 dark:border-neutral-800">
               <div
                 className={`text-[13px] font-bold ${textCls} flex items-center gap-1.5`}

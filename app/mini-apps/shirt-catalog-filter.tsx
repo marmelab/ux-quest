@@ -223,7 +223,7 @@ function ShirtImage({ shirt }: { shirt: Shirt }) {
   const { bg, accent, pattern } = shirt.image
   return (
     <div
-      className="relative flex aspect-[3/4] items-center justify-center overflow-hidden rounded-md"
+      className="relative flex aspect-3/4 items-center justify-center overflow-hidden rounded-md"
       style={{ backgroundColor: bg }}
     >
       {/* Shirt silhouette */}

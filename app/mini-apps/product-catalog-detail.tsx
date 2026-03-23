@@ -175,7 +175,7 @@ function ProductImage({
   return (
     <div
       className={`relative flex items-center justify-center overflow-hidden rounded-md ${
-        large ? "aspect-square" : "aspect-[4/3]"
+        large ? "aspect-square" : "aspect-4/3"
       }`}
       style={{ backgroundColor: product.image.bg }}
     >

@@ -88,7 +88,7 @@ const initialContacts: Contact[] = [
 function Toast({ message, visible }: { message: string; visible: boolean }) {
   return (
     <div
-      className={`fixed right-4 bottom-4 z-[100] flex items-center gap-2 rounded-lg border bg-background px-4 py-2.5 text-sm shadow-lg transition-all duration-300 ${
+      className={`absolute bottom-4 left-1/2 z-100 flex -translate-x-1/2 items-center gap-2 rounded-lg border bg-background px-4 py-2.5 text-sm shadow-lg transition-all duration-300 ${
         visible
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-2 opacity-0"
@@ -147,7 +147,7 @@ function ContactTableEdit() {
   }
 
   return (
-    <div className="mx-auto flex max-w-2xl flex-col gap-3 p-4 text-sm">
+    <div className="relative mx-auto flex max-w-2xl flex-col gap-3 p-4 text-sm">
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-base font-medium">Contacts</h2>
@@ -165,7 +165,7 @@ function ContactTableEdit() {
               <TableHead className="text-xs">Email</TableHead>
               <TableHead className="text-xs">Company</TableHead>
               <TableHead className="text-xs">Role</TableHead>
-              <TableHead className="w-[60px] text-xs" />
+              <TableHead className="w-15 text-xs" />
             </TableRow>
           </TableHeader>
           <TableBody>

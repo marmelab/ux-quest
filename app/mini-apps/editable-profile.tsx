@@ -144,17 +144,14 @@ function EditableProfile() {
                     onKeyDown={handleKeyDown}
                     onBlur={save}
                     autoFocus
-                    className="w-full border-b border-border bg-transparent py-0.5 outline-none focus:border-ring"
-                    style={{
-                      fontFamily: "system-ui, -apple-system, sans-serif",
-                    }}
+                    className="w-full border-b border-border bg-transparent py-0.5 text-[15px] outline-none focus:border-ring"
                   />
                   {error && (
                     <span className="text-xs text-destructive">{error}</span>
                   )}
                 </>
               ) : (
-                <span className="min-h-[1lh] py-0.5">{user[key]}</span>
+                <span className="min-h-lh py-0.5">{user[key]}</span>
               )}
             </div>
             {editing !== key && (
