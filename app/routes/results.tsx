@@ -16,6 +16,14 @@ function getVerdict(ratio: number): string {
   return "Tough round! Don't worry, every expert started somewhere."
 }
 
+function getLevelImage(ratio: number): string {
+  if (ratio >= 0.9) return "/level5.webp"
+  if (ratio >= 0.7) return "/level4.webp"
+  if (ratio >= 0.5) return "/level3.webp"
+  if (ratio >= 0.3) return "/level2.webp"
+  return "/level1.webp"
+}
+
 const UX_RESOURCES = [
   {
     name: "Nielsen Norman Group",
@@ -104,6 +112,11 @@ export default function ResultsRoute() {
           {/* Score section */}
           <Card className="w-full">
             <CardContent className="flex flex-col items-center">
+              <img
+                src={getLevelImage(ratio)}
+                alt=""
+                className="mb-2 w-48 object-contain"
+              />
               <ScoreBoard
                 results={isTestMode ? undefined : results}
                 overrideScore={isTestMode ? totalScore : undefined}
