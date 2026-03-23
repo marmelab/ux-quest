@@ -35,7 +35,6 @@ export function AnswerInput({
     const trimmed = text.trim()
     if (!trimmed) return
     onSubmit(trimmed)
-    setText("")
   }
 
   return (
