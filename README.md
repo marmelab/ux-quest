@@ -4,6 +4,8 @@ UX Quest is a UX problem detection training game. Users examine mini-application
 
 Play the game at [https://marmelab.com/ux-quest/](https://marmelab.com/ux-quest/).
 
+<img width="756" height="764" alt="ux-quest" src="https://github.com/user-attachments/assets/4c33b125-6f7a-4a83-8619-eac4865f9092" />
+
 ## Motivation
 
 Developers sometimes struggle to identify UX problems in their own work. The problem is becoming more pressing as coding agents take on more of the implementation work, but fail to address usability issues.
