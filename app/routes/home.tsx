@@ -58,6 +58,7 @@ export default function Home() {
     <>
       <div className="flex flex-1 items-center justify-center p-6">
         <div className="flex max-w-md flex-col items-center gap-6 text-center">
+          <img src="/ux-quest.webp" alt="UX Quest" className="w-48" />
           <div className="flex flex-col gap-2">
             <h1 className="text-3xl font-bold">UX Quest</h1>
             <p className="text-sm leading-relaxed text-muted-foreground">
