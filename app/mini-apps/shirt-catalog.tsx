@@ -636,8 +636,8 @@ function ShirtCatalogFilter() {
 
 // --- Definition ---
 
-export const shirtCatalogFilter: MiniAppDefinition = {
-  id: "shirt-catalog-filter",
+export const shirtCatalog: MiniAppDefinition = {
+  id: "shirt-catalog",
   name: "Men's Shirt Shop",
   introduction: "A filterable list of products for an e-commerce site.",
   category: "lists",

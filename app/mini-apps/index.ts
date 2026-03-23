@@ -5,7 +5,7 @@ import { monitoringDashboard } from "./monitoring-dashboard"
 import { productFormCollapsible } from "./product-form-collapsible"
 import { productTable } from "./product-table"
 import { productTableBulkDelete } from "./product-table-bulk-delete"
-import { shirtCatalogFilter } from "./shirt-catalog-filter"
+import { shirtCatalog } from "./shirt-catalog"
 import { loginForm } from "./login-form"
 import { bookstoreAdmin } from "./bookstore-admin"
 import { salesChart } from "./sales-chart"
@@ -21,7 +21,7 @@ export const miniApps: MiniAppDefinition[] = [
   productFormCollapsible,
   monitoringDashboard,
   contactTableEdit,
-  shirtCatalogFilter,
+  shirtCatalog,
   loginForm,
   bookstoreAdmin,
   salesChart,
