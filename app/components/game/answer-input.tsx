@@ -12,6 +12,27 @@ interface AnswerInputProps {
   lastAttempt?: AttemptResult
 }
 
+const WRONG_ANSWER_MESSAGES = [
+  "Not quite — try again!",
+  "Nope, that's not it.",
+  "Not this time — look again.",
+  "That's not the one.",
+  "Incorrect — give it another go.",
+  "Hmm, not exactly. What else do you notice?",
+  "Keep looking — there's something off in there!",
+  "Try describing it differently.",
+  "Think about the user's goal — what's getting in their way?",
+  "Consider the user's first impression of this UI.",
+  "What would frustrate a real user trying to complete a task?",
+  "Think about discoverability — can users find what they need?",
+  "What expectation does this UI set that it doesn't fulfill?",
+  "Focus on the core task — what makes it harder than it should be?",
+  "Imagine using this under time pressure — what would trip you up?",
+  "There's a classic UX anti-pattern hiding in there.",
+  "Try a different angle.",
+  "What's the first thing a new user would struggle with here?",
+]
+
 export function AnswerInput({
   onSubmit,
   onSkip,
@@ -21,11 +42,17 @@ export function AnswerInput({
   lastAttempt,
 }: AnswerInputProps) {
   const [text, setText] = useState("")
+  const [feedbackMessage, setFeedbackMessage] = useState("")
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const remaining = maxAttempts - attemptsUsed
 
   useEffect(() => {
     if (lastAttempt && !lastAttempt.correct) {
+      setFeedbackMessage(
+        WRONG_ANSWER_MESSAGES[
+          Math.floor(Math.random() * WRONG_ANSWER_MESSAGES.length)
+        ]
+      )
       textareaRef.current?.focus()
     }
   }, [lastAttempt])
@@ -47,9 +74,7 @@ export function AnswerInput({
         }`}
       >
         <p className="text-sm font-medium text-red-800 dark:text-red-200">
-          {lastAttempt && !lastAttempt.correct
-            ? `Not quite — try again!`
-            : "\u00A0"}
+          {lastAttempt && !lastAttempt.correct ? feedbackMessage : "\u00A0"}
         </p>
       </div>
       <label className="text-sm font-medium">
@@ -72,7 +97,11 @@ export function AnswerInput({
         disabled={isSubmitting}
       />
       <div className="flex gap-2">
-        <Button type="submit" disabled={!text.trim() || isSubmitting} className="flex-1">
+        <Button
+          type="submit"
+          disabled={!text.trim() || isSubmitting}
+          className="flex-1"
+        >
           {isSubmitting ? "Analyzing..." : "Submit"}
         </Button>
         <Button
