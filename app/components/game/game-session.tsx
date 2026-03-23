@@ -9,7 +9,7 @@ import { AnswerInput } from "./answer-input"
 import { MiniAppPlayer } from "./mini-app-player"
 import { ProgressBar } from "./progress-bar"
 export function GameSession() {
-  const { state, startGame, submitAnswer, nextAfterReview, maxAttempts } =
+  const { state, startGame, submitAnswer, skipQuestion, nextAfterReview, maxAttempts } =
     useGame()
   const { compare } = useSemanticSimilarity()
   const navigate = useNavigate()
@@ -96,6 +96,7 @@ export function GameSession() {
           <AnswerFeedback
             attempts={lastResult.attempts}
             passed={lastResult.passed}
+            skipped={lastResult.skipped}
             expectedAnswer={currentMiniApp.expectedAnswers[0]}
             score={lastResult.score}
             onNext={handleNext}
@@ -104,6 +105,7 @@ export function GameSession() {
         ) : (
           <AnswerInput
             onSubmit={handleSubmit}
+            onSkip={skipQuestion}
             attemptsUsed={state.currentAttempts.length}
             maxAttempts={maxAttempts}
             isSubmitting={isSubmitting}

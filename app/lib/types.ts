@@ -38,6 +38,7 @@ export interface TestResult {
   attempts: AttemptResult[]
   passed: boolean
   score: number
+  skipped?: boolean
 }
 
 export type GamePhase = "idle" | "playing" | "reviewing" | "finished"

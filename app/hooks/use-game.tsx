@@ -28,6 +28,7 @@ const initialState: GameState = {
 type GameAction =
   | { type: "START_GAME" }
   | { type: "SUBMIT_ATTEMPT"; attempt: AttemptResult }
+  | { type: "SKIP" }
   | { type: "NEXT_MINI_APP" }
   | { type: "RESET" }
 
@@ -72,6 +73,21 @@ function gameReducer(state: GameState, action: GameAction): GameState {
       return { ...state, currentAttempts: attempts }
     }
 
+    case "SKIP": {
+      const result: TestResult = {
+        miniAppId: state.selectedMiniApps[state.currentIndex].id,
+        attempts: state.currentAttempts,
+        passed: false,
+        score: 0,
+        skipped: true,
+      }
+      return {
+        ...state,
+        phase: "reviewing",
+        results: [...state.results, result],
+      }
+    }
+
     case "NEXT_MINI_APP": {
       const nextIndex = state.currentIndex + 1
       if (nextIndex >= state.selectedMiniApps.length) {
@@ -97,6 +113,7 @@ interface GameContextValue {
   state: GameState
   startGame: () => void
   submitAnswer: (attempt: AttemptResult) => void
+  skipQuestion: () => void
   nextAfterReview: () => void
   resetGame: () => void
   maxAttempts: number
@@ -112,6 +129,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
     (attempt: AttemptResult) => dispatch({ type: "SUBMIT_ATTEMPT", attempt }),
     []
   )
+  const skipQuestion = useCallback(() => dispatch({ type: "SKIP" }), [])
   const nextAfterReview = useCallback(
     () => dispatch({ type: "NEXT_MINI_APP" }),
     []
@@ -124,6 +142,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
         state,
         startGame,
         submitAnswer,
+        skipQuestion,
         nextAfterReview,
         resetGame,
         maxAttempts: MAX_ATTEMPTS,

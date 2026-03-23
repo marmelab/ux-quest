@@ -5,6 +5,7 @@ import type { AttemptResult } from "~/lib/types"
 interface AnswerFeedbackProps {
   attempts: AttemptResult[]
   passed: boolean
+  skipped?: boolean
   expectedAnswer: string
   score: number
   onNext: () => void
@@ -12,8 +13,8 @@ interface AnswerFeedbackProps {
 }
 
 export function AnswerFeedback({
-  attempts,
   passed,
+  skipped,
   expectedAnswer,
   score,
   onNext,
@@ -21,18 +22,20 @@ export function AnswerFeedback({
 }: AnswerFeedbackProps) {
   return (
     <div className="flex flex-col gap-4">
-      <div
-        className={`flex items-center justify-between rounded-lg p-4 ${
-          passed
-            ? "bg-green-50 text-green-900 dark:bg-green-950 dark:text-green-100"
-            : "bg-red-50 text-red-900 dark:bg-red-950 dark:text-red-100"
-        }`}
-      >
-        <p className="font-medium">{passed ? "Correct!" : "Incorrect"}</p>
-        <span className="flex items-center gap-1 font-semibold">
-          <Banana className="size-4" />+{score.toLocaleString()}
-        </span>
-      </div>
+      {!skipped && (
+        <div
+          className={`flex items-center justify-between rounded-lg p-4 ${
+            passed
+              ? "bg-green-50 text-green-900 dark:bg-green-950 dark:text-green-100"
+              : "bg-red-50 text-red-900 dark:bg-red-950 dark:text-red-100"
+          }`}
+        >
+          <p className="font-medium">{passed ? "Correct!" : "Incorrect"}</p>
+          <span className="flex items-center gap-1 font-semibold">
+            <Banana className="size-4" />+{score.toLocaleString()}
+          </span>
+        </div>
+      )}
 
       <div className="rounded-lg border border-border p-4">
         <p className="mb-1 text-xs font-medium text-muted-foreground uppercase">

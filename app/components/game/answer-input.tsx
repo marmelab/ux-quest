@@ -5,6 +5,7 @@ import type { AttemptResult } from "~/lib/types"
 
 interface AnswerInputProps {
   onSubmit: (text: string) => void
+  onSkip: () => void
   attemptsUsed: number
   maxAttempts: number
   isSubmitting: boolean
@@ -13,6 +14,7 @@ interface AnswerInputProps {
 
 export function AnswerInput({
   onSubmit,
+  onSkip,
   attemptsUsed,
   maxAttempts,
   isSubmitting,
@@ -70,9 +72,19 @@ export function AnswerInput({
         placeholder="Describe the UX problem you detected..."
         disabled={isSubmitting}
       />
-      <Button type="submit" disabled={!text.trim() || isSubmitting}>
-        {isSubmitting ? "Analyzing..." : "Submit"}
-      </Button>
+      <div className="flex gap-2">
+        <Button type="submit" disabled={!text.trim() || isSubmitting} className="flex-1">
+          {isSubmitting ? "Analyzing..." : "Submit"}
+        </Button>
+        <Button
+          type="button"
+          variant="outline"
+          disabled={isSubmitting}
+          onClick={onSkip}
+        >
+          Skip
+        </Button>
+      </div>
     </form>
   )
 }
