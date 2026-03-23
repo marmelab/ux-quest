@@ -5,6 +5,7 @@ import { Footer } from "~/components/footer"
 import { Button } from "~/components/ui/button"
 import { useIsMobile } from "~/hooks/use-mobile"
 import { isModelReady, loadModel } from "~/lib/semantic-similarity.client"
+import uxQuestImage from "../../public/ux-quest.webp"
 
 export default function Home() {
   const navigate = useNavigate()
@@ -58,7 +59,7 @@ export default function Home() {
     <>
       <div className="flex flex-1 items-center justify-center p-6">
         <div className="flex max-w-md flex-col items-center gap-6 text-center">
-          <img src="/ux-quest.webp" alt="UX Quest" className="w-48" />
+          <img src={uxQuestImage} alt="UX Quest" className="w-48" />
           <div className="flex flex-col gap-2">
             <h1 className="text-3xl font-bold">UX Quest</h1>
             <p className="text-sm leading-relaxed text-muted-foreground">

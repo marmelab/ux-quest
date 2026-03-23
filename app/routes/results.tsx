@@ -7,6 +7,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card"
 import { computeMaxScore, computeTotalScore } from "~/lib/scoring"
 import { getAllMiniApps } from "~/lib/mini-app-registry"
 import type { TestResult } from "~/lib/types"
+import level1 from "../../public/level1.webp"
+import level2 from "../../public/level2.webp"
+import level3 from "../../public/level3.webp"
+import level4 from "../../public/level4.webp"
+import level5 from "../../public/level5.webp"
 
 function getVerdict(ratio: number): string {
   if (ratio >= 0.9) return "Outstanding! You have a sharp eye for UX issues."
@@ -17,11 +22,11 @@ function getVerdict(ratio: number): string {
 }
 
 function getLevelImage(ratio: number): string {
-  if (ratio >= 0.9) return "/level5.webp"
-  if (ratio >= 0.7) return "/level4.webp"
-  if (ratio >= 0.5) return "/level3.webp"
-  if (ratio >= 0.3) return "/level2.webp"
-  return "/level1.webp"
+  if (ratio >= 0.9) return level5
+  if (ratio >= 0.7) return level4
+  if (ratio >= 0.5) return level3
+  if (ratio >= 0.3) return level2
+  return level1
 }
 
 const UX_RESOURCES = [
