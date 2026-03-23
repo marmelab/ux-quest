@@ -209,89 +209,94 @@ function ContactTableEdit() {
                   Update the contact information for {editingContact.name}.
                 </DialogDescription>
               </DialogHeader>
-              <form onSubmit={(e) => { e.preventDefault(); handleSave() }}>
-              <div className="grid gap-3 py-1">
-                <div className="grid grid-cols-4 items-center gap-3">
-                  <Label className="justify-end" htmlFor="edit-name">
-                    Name *
-                  </Label>
-                  <Input
-                    id="edit-name"
-                    value={editingContact.name}
-                    onChange={(e) => updateField("name", e.target.value)}
-                    className="col-span-3"
-                  />
-                </div>
-                <div className="grid grid-cols-4 items-start gap-3">
-                  <Label className="mt-2 justify-end" htmlFor="edit-email">
-                    Email *
-                  </Label>
-                  <div className="col-span-3">
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault()
+                  handleSave()
+                }}
+              >
+                <div className="grid gap-3 py-1">
+                  <div className="grid grid-cols-4 items-center gap-3">
+                    <Label className="justify-end" htmlFor="edit-name">
+                      Name *
+                    </Label>
                     <Input
-                      id="edit-email"
-                      type="email"
-                      value={editingContact.email}
-                      onChange={(e) => {
-                        updateField("email", e.target.value)
-                        if (emailError) setEmailError("")
-                      }}
-                      aria-invalid={!!emailError}
+                      id="edit-name"
+                      value={editingContact.name}
+                      onChange={(e) => updateField("name", e.target.value)}
+                      className="col-span-3"
                     />
-                    {emailError && (
-                      <p className="mt-1 text-xs text-destructive">
-                        {emailError}
-                      </p>
-                    )}
+                  </div>
+                  <div className="grid grid-cols-4 items-start gap-3">
+                    <Label className="mt-2 justify-end" htmlFor="edit-email">
+                      Email *
+                    </Label>
+                    <div className="col-span-3">
+                      <Input
+                        id="edit-email"
+                        type="email"
+                        value={editingContact.email}
+                        onChange={(e) => {
+                          updateField("email", e.target.value)
+                          if (emailError) setEmailError("")
+                        }}
+                        aria-invalid={!!emailError}
+                      />
+                      {emailError && (
+                        <p className="mt-1 text-xs text-destructive">
+                          {emailError}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-4 items-center gap-3">
+                    <Label className="justify-end" htmlFor="edit-phone">
+                      Phone
+                    </Label>
+                    <Input
+                      id="edit-phone"
+                      type="tel"
+                      value={editingContact.phone}
+                      onChange={(e) => updateField("phone", e.target.value)}
+                      className="col-span-3"
+                    />
+                  </div>
+                  <div className="grid grid-cols-4 items-center gap-3">
+                    <Label className="justify-end" htmlFor="edit-company">
+                      Company
+                    </Label>
+                    <Input
+                      id="edit-company"
+                      value={editingContact.company}
+                      onChange={(e) => updateField("company", e.target.value)}
+                      className="col-span-3"
+                    />
+                  </div>
+                  <div className="grid grid-cols-4 items-center gap-3">
+                    <Label className="justify-end" htmlFor="edit-role">
+                      Role
+                    </Label>
+                    <Input
+                      id="edit-role"
+                      value={editingContact.role}
+                      onChange={(e) => updateField("role", e.target.value)}
+                      className="col-span-3"
+                    />
                   </div>
                 </div>
-                <div className="grid grid-cols-4 items-center gap-3">
-                  <Label className="justify-end" htmlFor="edit-phone">
-                    Phone
-                  </Label>
-                  <Input
-                    id="edit-phone"
-                    type="tel"
-                    value={editingContact.phone}
-                    onChange={(e) => updateField("phone", e.target.value)}
-                    className="col-span-3"
-                  />
-                </div>
-                <div className="grid grid-cols-4 items-center gap-3">
-                  <Label className="justify-end" htmlFor="edit-company">
-                    Company
-                  </Label>
-                  <Input
-                    id="edit-company"
-                    value={editingContact.company}
-                    onChange={(e) => updateField("company", e.target.value)}
-                    className="col-span-3"
-                  />
-                </div>
-                <div className="grid grid-cols-4 items-center gap-3">
-                  <Label className="justify-end" htmlFor="edit-role">
-                    Role
-                  </Label>
-                  <Input
-                    id="edit-role"
-                    value={editingContact.role}
-                    onChange={(e) => updateField("role", e.target.value)}
-                    className="col-span-3"
-                  />
-                </div>
-              </div>
-              <DialogFooter>
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={() => {
-                    setDialogOpen(false)
-                    setEditingContact(null)
-                  }}
-                >
-                  Cancel
-                </Button>
-                <Button type="submit">Save changes</Button>
-              </DialogFooter>
+                <DialogFooter>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => {
+                      setDialogOpen(false)
+                      setEditingContact(null)
+                    }}
+                  >
+                    Cancel
+                  </Button>
+                  <Button type="submit">Save changes</Button>
+                </DialogFooter>
               </form>
             </>
           )}
@@ -322,6 +327,7 @@ export const contactTableEdit: MiniAppDefinition = {
     "The edit modal traps you in — the only way out is through the Cancel or Save button, not the backdrop or Escape.",
     "Pressing Escape or clicking outside the dialog should close it, but neither action works.",
   ],
+  hint: "Focus on the edit dialog",
   wrongAnswers: [
     "The table doesn't have pagination for large datasets.",
     "There is no search or filter functionality.",

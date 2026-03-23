@@ -653,6 +653,7 @@ export const shirtCatalogFilter: MiniAppDefinition = {
     "There's no way to tell filters are active without reopening the dropdown. The button looks identical whether filtered or not.",
     "Closing the filter dropdown hides all evidence that filters are applied, making a small or empty list misleading.",
   ],
+  hint: "Apply some filters.",
   wrongAnswers: [
     "The product images are low quality or missing.",
     "The filter dropdown is hard to open or close.",

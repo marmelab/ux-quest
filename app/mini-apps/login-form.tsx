@@ -596,13 +596,29 @@ function LoginForm() {
 
   switch (page) {
     case "signup":
-      return <div className="p-4"><SignUpPage onNavigate={setPage} /></div>
+      return (
+        <div className="p-4">
+          <SignUpPage onNavigate={setPage} />
+        </div>
+      )
     case "forgot-password":
-      return <div className="p-4"><ForgotPasswordPage onNavigate={setPage} /></div>
+      return (
+        <div className="p-4">
+          <ForgotPasswordPage onNavigate={setPage} />
+        </div>
+      )
     case "dashboard":
-      return <div className="p-4"><DashboardPage email={userEmail} onLogout={handleLogout} /></div>
+      return (
+        <div className="p-4">
+          <DashboardPage email={userEmail} onLogout={handleLogout} />
+        </div>
+      )
     default:
-      return <div className="p-4"><LoginPage onLogin={handleLogin} onNavigate={setPage} /></div>
+      return (
+        <div className="p-4">
+          <LoginPage onLogin={handleLogin} onNavigate={setPage} />
+        </div>
+      )
   }
 }
 
@@ -625,6 +641,7 @@ export const loginForm: MiniAppDefinition = {
     "The login error message appears but the form is emptied, so users lose what they typed.",
     "Both fields are reset on authentication failure instead of preserving the email address.",
   ],
+  hint: "What happens when you enter wrong credentials?",
   wrongAnswers: [
     "The password is not masked or hidden.",
     "There is no rate limiting or lockout after multiple failed attempts.",

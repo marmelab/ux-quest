@@ -195,6 +195,7 @@ export const editableProfile: MiniAppDefinition = {
     "The input text looks different from the display text when editing in place.",
     "The layout shifts when switching to edit mode.",
   ],
+  hint: "Click on a field to edit it.",
   wrongAnswers: [
     "The mouse cursor doesn't change to indicate the text is editable.",
     "There is no visual indicator that fields are clickable.",

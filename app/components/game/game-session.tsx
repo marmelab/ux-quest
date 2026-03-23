@@ -9,8 +9,14 @@ import { AnswerInput } from "./answer-input"
 import { MiniAppPlayer } from "./mini-app-player"
 import { ProgressBar } from "./progress-bar"
 export function GameSession() {
-  const { state, startGame, submitAnswer, skipQuestion, nextAfterReview, maxAttempts } =
-    useGame()
+  const {
+    state,
+    startGame,
+    submitAnswer,
+    skipQuestion,
+    nextAfterReview,
+    maxAttempts,
+  } = useGame()
   const { compare } = useSemanticSimilarity()
   const navigate = useNavigate()
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -90,12 +96,12 @@ export function GameSession() {
           score={totalScore}
         />
 
-        <div className="flex gap-6 items-start">
-          <div className="flex-1 min-w-0">
+        <div className="flex items-start gap-6">
+          <div className="min-w-0 flex-1">
             <MiniAppPlayer miniApp={currentMiniApp} />
           </div>
 
-          <div className="w-80 shrink-0 sticky top-6">
+          <div className="sticky top-6 w-80 shrink-0">
             {isReviewing && lastResult ? (
               <AnswerFeedback
                 attempts={lastResult.attempts}
@@ -104,7 +110,9 @@ export function GameSession() {
                 expectedAnswer={currentMiniApp.expectedAnswers[0]}
                 score={lastResult.score}
                 onNext={handleNext}
-                isLast={state.currentIndex === state.selectedMiniApps.length - 1}
+                isLast={
+                  state.currentIndex === state.selectedMiniApps.length - 1
+                }
               />
             ) : (
               <AnswerInput
@@ -118,6 +126,7 @@ export function GameSession() {
                     ? state.currentAttempts[state.currentAttempts.length - 1]
                     : undefined
                 }
+                hint={currentMiniApp.hint}
               />
             )}
           </div>

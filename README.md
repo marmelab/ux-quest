@@ -51,6 +51,7 @@ interface MiniAppDefinition {
   difficulty: Difficulty        // "easy" | "medium" | "hard"
   component: ComponentType      // the React component
   expectedAnswers: string[]     // 6-10 phrasings of the correct UX flaw
+  hint: string                  // clue shown on the player's last attempt
   wrongAnswers?: string[]       // 5-6 plausible but incorrect answers
 }
 ```

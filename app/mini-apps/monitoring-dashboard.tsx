@@ -583,6 +583,7 @@ export const monitoringDashboard: MiniAppDefinition = {
     "While the big numbers are readable, the supporting text (labels, units) fail contrast requirements.",
     "The grey levels used for text isn't distinct enough from the background, causing readability issues for units.",
   ],
+  hint: "Each metric has a label, value, and unit.",
   wrongAnswers: [
     "The tabs are confusing or don't work properly.",
     "The layout is too cluttered or hard to navigate.",

@@ -25,6 +25,8 @@ export interface MiniAppDefinition {
   expectedAnswers: string[]
   /** Plausible-but-wrong answers — used to reject topically similar but incorrect responses */
   wrongAnswers?: string[]
+  /** Hint shown on the last attempt to help the player */
+  hint: string
 }
 
 export interface AttemptResult {

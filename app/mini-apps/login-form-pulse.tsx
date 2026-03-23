@@ -327,11 +327,23 @@ function LoginFormPulse() {
 
   switch (page) {
     case "forgot-password":
-      return <div className="p-4"><ForgotPasswordPage onNavigate={setPage} /></div>
+      return (
+        <div className="p-4">
+          <ForgotPasswordPage onNavigate={setPage} />
+        </div>
+      )
     case "dashboard":
-      return <div className="p-4"><DashboardPage email={userEmail} onLogout={handleLogout} /></div>
+      return (
+        <div className="p-4">
+          <DashboardPage email={userEmail} onLogout={handleLogout} />
+        </div>
+      )
     default:
-      return <div className="p-4"><LoginPage onLogin={handleLogin} onNavigate={setPage} /></div>
+      return (
+        <div className="p-4">
+          <LoginPage onLogin={handleLogin} onNavigate={setPage} />
+        </div>
+      )
   }
 }
 
@@ -354,6 +366,7 @@ export const loginFormPulse: MiniAppDefinition = {
     "The forgot password link breaks the natural keyboard flow from password to the submit button.",
     "Tab index is not set on the forgot password link, so it appears in the tab order between the password input and the login button, disrupting keyboard navigation.",
   ],
+  hint: "Try filling in the form using only your keyboard.",
   wrongAnswers: [
     "The form fields are cleared on failed login.",
     "There is no sign up option or account creation link.",

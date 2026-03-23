@@ -238,6 +238,7 @@ export const salesChart: MiniAppDefinition = {
     "The chart container hides part of the tooltip when it would extend beyond the chart area.",
     "The info modal can go out of the screen bounds.",
   ],
+  hint: "Hover over data points.",
   wrongAnswers: [
     "The chart lines are hard to distinguish from each other.",
     "The Y-axis labels are confusing or incorrectly formatted.",

@@ -28,5 +28,6 @@ export const templateMiniApp: MiniAppDefinition = {
   difficulty: "easy",
   component: TemplateMiniApp,
   expectedAnswers: ["Describe the UX problem here"],
+  hint: "A hint to help the player find the UX problem.",
   wrongAnswers: ["Describe a plausible but incorrect UX problem here"],
 }

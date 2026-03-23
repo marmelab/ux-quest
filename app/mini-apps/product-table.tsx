@@ -347,6 +347,7 @@ export const productTable: MiniAppDefinition = {
     "Sorting and filtering should bring the user back to page 1 but they don't.",
     "Searching when on another page than page 1 shows no results because search doesn't reset to page 1.",
   ],
+  hint: "Start by navigating to page 2.",
   wrongAnswers: [
     "The search is too slow or laggy.",
     "The table doesn't show enough columns.",

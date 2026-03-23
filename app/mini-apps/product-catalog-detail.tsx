@@ -552,6 +552,7 @@ export const productCatalogDetail: MiniAppDefinition = {
     "When you view a product detail and press the browser back button, you leave the mini-app instead of returning to the product grid.",
     "The URL doesn't change when navigating to a product detail, so browser back navigation is broken.",
   ],
+  hint: "From a product detail page, how do you get back to the product listing?",
   wrongAnswers: [
     "The product images are just colored placeholders instead of real photos.",
     "There is no search or filter functionality for the products.",

@@ -270,6 +270,7 @@ export const productTableBulkDelete: MiniAppDefinition = {
     "Clicking anywhere on the row should toggle the selection, but only the tiny checkbox works.",
     "The entire row should be clickable to select it, but you have to click the small checkbox precisely.",
   ],
+  hint: "Try selecting rows.",
   wrongAnswers: [
     "There is no way to deselect items or clear the selection.",
     "The confirmation dialog is missing or unclear.",

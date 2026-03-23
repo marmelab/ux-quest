@@ -122,7 +122,9 @@ function ArticlesList({ basePath }: { basePath: string }) {
               <TableCell className={mutedCls}>{article.category}</TableCell>
               <TableCell>
                 <Badge
-                  variant={article.status === "published" ? "default" : "secondary"}
+                  variant={
+                    article.status === "published" ? "default" : "secondary"
+                  }
                   className="text-[10px]"
                 >
                   {article.status}
@@ -196,11 +198,16 @@ function Dashboard({ basePath }: { basePath: string }) {
         onClick={() => nav(`${basePath}/articles`)}
       >
         <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-blue-50 dark:bg-[#1e2640]">
-          <BookOpenIcon size={18} className="text-blue-600 dark:text-indigo-400" />
+          <BookOpenIcon
+            size={18}
+            className="text-blue-600 dark:text-indigo-400"
+          />
         </div>
         <div>
           <div className={`text-[13px] font-medium ${textCls}`}>Articles</div>
-          <div className={`text-[12px] ${mutedCls}`}>{ARTICLES.length} articles</div>
+          <div className={`text-[12px] ${mutedCls}`}>
+            {ARTICLES.length} articles
+          </div>
         </div>
       </div>
     </div>
@@ -279,8 +286,13 @@ function HelpCenterAdminApp() {
         {/* App bar */}
         <div className="flex h-12 shrink-0 items-center justify-between border-b border-zinc-200 bg-white px-4 dark:border-neutral-800 dark:bg-[#111]">
           <div className="flex items-center gap-2">
-            <BookOpenIcon size={15} className="text-blue-600 dark:text-indigo-400" />
-            <span className={`text-[13px] font-bold ${textCls}`}>Help Center Admin</span>
+            <BookOpenIcon
+              size={15}
+              className="text-blue-600 dark:text-indigo-400"
+            />
+            <span className={`text-[13px] font-bold ${textCls}`}>
+              Help Center Admin
+            </span>
           </div>
           <div className="flex h-7 w-7 items-center justify-center rounded-full bg-indigo-600 text-[10px] font-bold tracking-wide text-white">
             JD
@@ -290,19 +302,25 @@ function HelpCenterAdminApp() {
         {/* Routes */}
         <Routes>
           <Route index element={<Navigate to="articles" replace />} />
-          <Route path="dashboard" element={
-            <>
-              <div className="flex shrink-0 items-center border-b border-zinc-200 bg-gray-100 px-4 py-2.5 dark:border-neutral-800 dark:bg-[#0d0d0d]">
-                <nav aria-label="Breadcrumb" className={`flex items-center gap-1.5 text-xs ${mutedCls}`}>
-                  {/* Current page — styled identically to clickable items elsewhere */}
-                  <span className="cursor-pointer underline">Home</span>
-                </nav>
-              </div>
-              <div className="flex-1 overflow-y-auto p-3">
-                <Dashboard basePath={basePath} />
-              </div>
-            </>
-          } />
+          <Route
+            path="dashboard"
+            element={
+              <>
+                <div className="flex shrink-0 items-center border-b border-zinc-200 bg-gray-100 px-4 py-2.5 dark:border-neutral-800 dark:bg-[#0d0d0d]">
+                  <nav
+                    aria-label="Breadcrumb"
+                    className={`flex items-center gap-1.5 text-xs ${mutedCls}`}
+                  >
+                    {/* Current page — styled identically to clickable items elsewhere */}
+                    <span className="cursor-pointer underline">Home</span>
+                  </nav>
+                </div>
+                <div className="flex-1 overflow-y-auto p-3">
+                  <Dashboard basePath={basePath} />
+                </div>
+              </>
+            }
+          />
           <Route path="articles/*" element={<Layout basePath={basePath} />}>
             <Route index element={<ArticlesList basePath={basePath} />} />
             <Route path=":id" element={<ArticleShow />} />
@@ -318,8 +336,7 @@ function HelpCenterAdminApp() {
 export const breadcrumbNav: MiniAppDefinition = {
   id: "help-center-admin",
   name: "Help Center Admin",
-  introduction:
-    "A knowledge base admin panel for browsing help articles.",
+  introduction: "A knowledge base admin panel for browsing help articles.",
   category: "navigation",
   difficulty: "easy",
   component: HelpCenterAdminApp,
@@ -333,6 +350,7 @@ export const breadcrumbNav: MiniAppDefinition = {
     "The breadcrumbs don't indicate the current page — all items have the same text color and weight",
     "The active breadcrumb item is styled the same as clickable ones with no indication of current location",
   ],
+  hint: "Look at the breadcrumb navigation.",
   wrongAnswers: [
     "The search bar doesn't persist its query when navigating between pages",
     "The sidebar doesn't show article counts for each section",

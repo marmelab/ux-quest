@@ -1025,6 +1025,7 @@ export const bookstoreAdmin: MiniAppDefinition = {
     "Notification messages are not visible in dark mode due to insufficient contrast between text color and background color.",
     "The app feedback toasts are readable in light mode but invisible in dark mode because the text color is too close to the background.",
   ],
+  hint: "Try switching to dark mode and performing actions.",
   wrongAnswers: [
     "The delete button is not styled differently from other actions, making it hard to identify as destructive.",
     "There is no confirmation dialog before deleting a book or author.",

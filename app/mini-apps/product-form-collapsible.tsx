@@ -474,6 +474,7 @@ export const productFormCollapsible: MiniAppDefinition = {
     "The form shows an error count but doesn't reveal which collapsed sections contain the errors.",
     "Submitting the form doesn't expand sections with errors, leaving the user unable to find and fix them.",
   ],
+  hint: "What happens when the form is submitted with errors?",
   wrongAnswers: [
     "The form fields are too small to read.",
     "The error messages are not descriptive enough.",

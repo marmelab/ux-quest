@@ -40,6 +40,7 @@ interface MiniAppDefinition {
   difficulty: Difficulty        // "easy" | "medium" | "hard"
   component: ComponentType      // the React component
   expectedAnswers: string[]     // 6-10 phrasings of the correct UX flaw
+  hint: string                  // clue shown on the player's last attempt
   wrongAnswers?: string[]       // 5-6 plausible but incorrect answers
 }
 ```
@@ -68,7 +69,7 @@ function MyMiniApp() {
 export const myMiniApp: MiniAppDefinition = {
   id: "my-mini-app",
   name: "My Mini App",
-  // ...
+  // ... expectedAnswers, hint, wrongAnswers, etc.
 }
 ```
 
@@ -152,12 +153,14 @@ For mini-apps with multiple views (e.g. list → detail → edit), use React Rou
 
 Mini-apps render inside a wrapper card (`rounded-lg border p-4` in game, `rounded-lg border p-6` in preview). Don't add an extra outer card — your component is already inside one. If your mini-app has a dark/custom background, you may use negative margins to fill the wrapper edge-to-edge.
 
-### Expected and wrong answers
+### Expected answers, hint, and wrong answers
 
 **expectedAnswers** (6-10 entries): Different phrasings of the same correct UX flaw. These are compared to the user's answer via semantic similarity (cosine similarity with threshold 0.65). Cover:
 - Short and direct descriptions
 - Longer, more detailed explanations
 - Descriptions from different angles (visual, functional, accessibility)
+
+**hint**: A single sentence shown to the player on their last attempt. It should nudge them toward the flaw without giving away the answer — e.g. suggest an interaction to try or an area to look at.
 
 **wrongAnswers** (5-6 entries): Plausible observations that are NOT the deliberate flaw. These help the ML model reject answers that are topically similar but incorrect. Think about what someone might say if they're looking in the wrong direction.
 

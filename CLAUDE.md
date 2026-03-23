@@ -24,9 +24,9 @@ Idle → Playing (interact with mini-app, submit answer) → Reviewing (show res
 
 ### Mini-app registry
 
-Each mini-app is a file in `app/mini-apps/` that exports a `MiniAppDefinition` (id, name, category, difficulty, component, expectedAnswers). The barrel `app/mini-apps/index.ts` collects them into an array. `app/lib/mini-app-registry.ts` provides helpers (`pickRandom`, `filterByCategory`, etc.).
+Each mini-app is a file in `app/mini-apps/` that exports a `MiniAppDefinition` (id, name, category, difficulty, component, expectedAnswers, hint). The barrel `app/mini-apps/index.ts` collects them into an array. `app/lib/mini-app-registry.ts` provides helpers (`pickRandom`, `filterByCategory`, etc.).
 
-To add a mini-app: copy `app/mini-apps/_template.tsx`, implement the component with one deliberate UX problem, provide multiple `expectedAnswers` phrasings, and add the import to `index.ts`.
+To add a mini-app: copy `app/mini-apps/_template.tsx`, implement the component with one deliberate UX problem, provide multiple `expectedAnswers` phrasings, a `hint` that nudges the player without giving away the answer, and add the import to `index.ts`.
 
 Mini-apps must not introduce unintended UX issues — the only flaw should be the deliberate one.
 

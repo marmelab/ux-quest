@@ -168,6 +168,7 @@ export const contactSheet: MiniAppDefinition = {
     "The name, subtitle, labels, and values each use a slightly different font size when fewer would suffice.",
     "The card uses seven distinct type sizes creating a cluttered visual hierarchy.",
   ],
+  hint: "Visual hierarchy and consistency are key for readability.",
   wrongAnswers: [
     "The contrast between text and background is too low to read.",
     "There is no way to edit the contact information.",

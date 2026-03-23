@@ -10,6 +10,7 @@ interface AnswerInputProps {
   maxAttempts: number
   isSubmitting: boolean
   lastAttempt?: AttemptResult
+  hint: string
 }
 
 const WRONG_ANSWER_MESSAGES = [
@@ -40,6 +41,7 @@ export function AnswerInput({
   maxAttempts,
   isSubmitting,
   lastAttempt,
+  hint,
 }: AnswerInputProps) {
   const [text, setText] = useState("")
   const [feedbackMessage, setFeedbackMessage] = useState("")
@@ -48,14 +50,17 @@ export function AnswerInput({
 
   useEffect(() => {
     if (lastAttempt && !lastAttempt.correct) {
+      const isLastAttempt = remaining === 1
       setFeedbackMessage(
-        WRONG_ANSWER_MESSAGES[
-          Math.floor(Math.random() * WRONG_ANSWER_MESSAGES.length)
-        ]
+        isLastAttempt
+          ? hint
+          : WRONG_ANSWER_MESSAGES[
+              Math.floor(Math.random() * WRONG_ANSWER_MESSAGES.length)
+            ]
       )
       textareaRef.current?.focus()
     }
-  }, [lastAttempt])
+  }, [lastAttempt, remaining, hint])
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -103,8 +108,25 @@ export function AnswerInput({
         </Button>
       </div>
       {lastAttempt && !lastAttempt.correct && (
-        <div className="rounded-lg bg-red-50 px-4 py-3 dark:bg-red-950">
-          <p className="text-sm font-medium text-red-800 dark:text-red-200">
+        <div
+          className={`rounded-lg px-4 py-3 ${
+            remaining === 1
+              ? "bg-amber-50 dark:bg-amber-950"
+              : "bg-red-50 dark:bg-red-950"
+          }`}
+        >
+          {remaining === 1 && (
+            <p className="mb-1 text-xs font-semibold text-amber-600 uppercase dark:text-amber-400">
+              Hint
+            </p>
+          )}
+          <p
+            className={`text-sm font-medium ${
+              remaining === 1
+                ? "text-amber-800 dark:text-amber-200"
+                : "text-red-800 dark:text-red-200"
+            }`}
+          >
             {feedbackMessage}
           </p>
         </div>
