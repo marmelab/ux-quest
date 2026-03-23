@@ -82,7 +82,7 @@ export function GameSession() {
 
   return (
     <div className="flex flex-1 justify-center p-6">
-      <div className="flex w-full max-w-2xl flex-col gap-6">
+      <div className="flex w-full max-w-5xl flex-col gap-6">
         <ProgressBar
           current={state.currentIndex + 1}
           total={state.selectedMiniApps.length}
@@ -90,32 +90,38 @@ export function GameSession() {
           score={totalScore}
         />
 
-        <MiniAppPlayer miniApp={currentMiniApp} />
+        <div className="flex gap-6 items-start">
+          <div className="flex-1 min-w-0">
+            <MiniAppPlayer miniApp={currentMiniApp} />
+          </div>
 
-        {isReviewing && lastResult ? (
-          <AnswerFeedback
-            attempts={lastResult.attempts}
-            passed={lastResult.passed}
-            skipped={lastResult.skipped}
-            expectedAnswer={currentMiniApp.expectedAnswers[0]}
-            score={lastResult.score}
-            onNext={handleNext}
-            isLast={state.currentIndex === state.selectedMiniApps.length - 1}
-          />
-        ) : (
-          <AnswerInput
-            onSubmit={handleSubmit}
-            onSkip={skipQuestion}
-            attemptsUsed={state.currentAttempts.length}
-            maxAttempts={maxAttempts}
-            isSubmitting={isSubmitting}
-            lastAttempt={
-              state.currentAttempts.length > 0
-                ? state.currentAttempts[state.currentAttempts.length - 1]
-                : undefined
-            }
-          />
-        )}
+          <div className="w-80 shrink-0 sticky top-6">
+            {isReviewing && lastResult ? (
+              <AnswerFeedback
+                attempts={lastResult.attempts}
+                passed={lastResult.passed}
+                skipped={lastResult.skipped}
+                expectedAnswer={currentMiniApp.expectedAnswers[0]}
+                score={lastResult.score}
+                onNext={handleNext}
+                isLast={state.currentIndex === state.selectedMiniApps.length - 1}
+              />
+            ) : (
+              <AnswerInput
+                onSubmit={handleSubmit}
+                onSkip={skipQuestion}
+                attemptsUsed={state.currentAttempts.length}
+                maxAttempts={maxAttempts}
+                isSubmitting={isSubmitting}
+                lastAttempt={
+                  state.currentAttempts.length > 0
+                    ? state.currentAttempts[state.currentAttempts.length - 1]
+                    : undefined
+                }
+              />
+            )}
+          </div>
+        </div>
       </div>
     </div>
   )

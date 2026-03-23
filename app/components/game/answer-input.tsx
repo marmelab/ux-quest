@@ -66,17 +66,6 @@ export function AnswerInput({
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-      <div
-        className={`rounded-lg px-4 py-3 transition-opacity ${
-          lastAttempt && !lastAttempt.correct
-            ? "bg-red-50 opacity-100 dark:bg-red-950"
-            : "opacity-0"
-        }`}
-      >
-        <p className="text-sm font-medium text-red-800 dark:text-red-200">
-          {lastAttempt && !lastAttempt.correct ? feedbackMessage : "\u00A0"}
-        </p>
-      </div>
       <label className="text-sm font-medium">
         What is the UX problem?
         <span className="ml-2 text-muted-foreground">
@@ -113,6 +102,13 @@ export function AnswerInput({
           Skip
         </Button>
       </div>
+      {lastAttempt && !lastAttempt.correct && (
+        <div className="rounded-lg bg-red-50 px-4 py-3 dark:bg-red-950">
+          <p className="text-sm font-medium text-red-800 dark:text-red-200">
+            {feedbackMessage}
+          </p>
+        </div>
+      )}
     </form>
   )
 }
