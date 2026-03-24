@@ -37,7 +37,7 @@ export function AnswerFeedback({
         </div>
       )}
 
-      <div className="rounded-lg border border-border p-4">
+      <div>
         <p className="mb-1 text-xs font-medium text-muted-foreground uppercase">
           Expected Answer
         </p>

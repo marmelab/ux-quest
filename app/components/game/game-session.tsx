@@ -101,7 +101,7 @@ export function GameSession() {
             <MiniAppPlayer miniApp={currentMiniApp} />
           </div>
 
-          <div className="sticky top-6 w-80 shrink-0">
+          <div className="sticky top-6 w-80 shrink-0 rounded-lg border bg-card p-4">
             {isReviewing && lastResult ? (
               <AnswerFeedback
                 attempts={lastResult.attempts}
