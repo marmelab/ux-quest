@@ -63,7 +63,7 @@ function MeetupEvent() {
     <div className="flex flex-col">
       <Toaster position="top-center" />
       {/* Header */}
-      <div className="bg-gradient-to-br from-orange-600 to-amber-500 px-5 py-6 text-white">
+      <div className="bg-linear-to-br from-orange-600 to-amber-500 px-5 py-6 text-white">
         <p className="mb-1 text-xs text-orange-100">{EVENT.group}</p>
         <h1 className="text-lg leading-tight font-semibold">{EVENT.title}</h1>
         <div className="mt-3 flex flex-wrap gap-2">
