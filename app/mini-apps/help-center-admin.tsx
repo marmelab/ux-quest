@@ -338,7 +338,7 @@ export const breadcrumbNav: MiniAppDefinition = {
   name: "Help Center Admin",
   introduction: "A knowledge base admin panel for browsing help articles.",
   category: "navigation",
-  difficulty: "easy",
+  difficulty: "medium",
   component: HelpCenterAdminApp,
   expectedAnswers: [
     "The breadcrumb links and current page label are styled identically so you can't tell what's clickable",

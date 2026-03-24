@@ -354,7 +354,7 @@ export const loginFormPulse: MiniAppDefinition = {
   introduction:
     "A simple login page for a project management tool. Valid credentials: alex.morgan@pulseapp.io / securepass1.",
   category: "accessibility",
-  difficulty: "hard",
+  difficulty: "medium",
   component: LoginFormPulse,
   expectedAnswers: [
     "The forgot password link is in the tab order between the password field and the submit button, so keyboard users land on it instead of the login button.",

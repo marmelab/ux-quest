@@ -256,7 +256,7 @@ export const productTableBulkDelete: MiniAppDefinition = {
   introduction:
     "A product inventory table with checkboxes for selecting rows and performing bulk actions.",
   category: "lists",
-  difficulty: "medium",
+  difficulty: "hard",
   component: ProductTableBulkDelete,
   expectedAnswers: [
     "The checkboxes have a very small click target — you have to click exactly on the tiny checkbox.",
