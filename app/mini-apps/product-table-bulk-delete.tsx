@@ -97,12 +97,47 @@ const initialProducts: Product[] = [
   },
 ]
 
+// UX BUG: Checkbox only toggles when the click lands very close to its center.
+// It looks and behaves like a normal checkbox otherwise, so users won't understand
+// why their clicks sometimes "miss".
+const CLICK_RADIUS = 4 // pixels from center that count as a hit
+
+function TinyCheckbox({
+  checked,
+  onChange,
+  ariaLabel,
+}: {
+  checked: boolean
+  onChange: () => void
+  ariaLabel: string
+}) {
+  return (
+    <input
+      type="checkbox"
+      checked={checked}
+      onChange={() => {
+        // no-op: we handle toggling via onPointerDown
+      }}
+      onPointerDown={(e) => {
+        e.preventDefault()
+        const rect = (e.target as HTMLElement).getBoundingClientRect()
+        const cx = rect.left + rect.width / 2
+        const cy = rect.top + rect.height / 2
+        const dx = e.clientX - cx
+        const dy = e.clientY - cy
+        if (Math.sqrt(dx * dx + dy * dy) <= CLICK_RADIUS) {
+          onChange()
+        }
+      }}
+      className="cursor-pointer accent-primary"
+      aria-label={ariaLabel}
+    />
+  )
+}
+
 function ProductTableBulkDelete() {
   const [products, setProducts] = useState(initialProducts)
   const [selected, setSelected] = useState<Set<number>>(new Set())
-
-  // BUG: the checkbox click targets are tiny — only the checkbox itself is clickable,
-  // not the surrounding cell or row. Normally the clickable area should be much larger.
 
   function toggleRow(id: number) {
     setSelected((prev) => {
@@ -177,12 +212,10 @@ function ProductTableBulkDelete() {
           <TableHeader>
             <TableRow>
               <TableHead className="w-10">
-                <input
-                  type="checkbox"
+                <TinyCheckbox
                   checked={allSelected}
                   onChange={toggleAll}
-                  className="cursor-pointer accent-primary"
-                  aria-label="Select all products"
+                  ariaLabel="Select all products"
                 />
               </TableHead>
               <TableHead className="text-xs">Product</TableHead>
@@ -208,12 +241,10 @@ function ProductTableBulkDelete() {
                   className={selected.has(p.id) ? "bg-muted/50" : ""}
                 >
                   <TableCell>
-                    <input
-                      type="checkbox"
+                    <TinyCheckbox
                       checked={selected.has(p.id)}
                       onChange={() => toggleRow(p.id)}
-                      className="cursor-pointer accent-primary"
-                      aria-label={`Select ${p.name}`}
+                      ariaLabel={`Select ${p.name}`}
                     />
                   </TableCell>
                   <TableCell>{p.name}</TableCell>
@@ -256,21 +287,20 @@ export const productTableBulkDelete: MiniAppDefinition = {
   introduction:
     "A product inventory table with checkboxes for selecting rows and performing bulk actions.",
   category: "lists",
-  difficulty: "hard",
+  difficulty: "medium",
   component: ProductTableBulkDelete,
   expectedAnswers: [
-    "The checkboxes have a very small click target — you have to click exactly on the tiny checkbox.",
-    "The clickable area for selecting rows is too small. Only the checkbox itself is clickable, not the cell or row.",
-    "The hit area for the checkboxes is tiny. Clicking near the checkbox but not exactly on it does nothing.",
-    "The selection checkboxes are hard to click because the click target doesn't extend to the full cell.",
-    "You have to precisely aim at the small checkbox to select a row. The surrounding area is not clickable.",
-    "The checkbox click targets are too small — the row or cell should also toggle the selection.",
-    "Clicking the table cell around the checkbox doesn't toggle it, only clicking the tiny checkbox itself works.",
-    "The checkboxes are small and hard to click. The clickable zone should be larger than just the checkbox.",
-    "Clicking anywhere on the row should toggle the selection, but only the tiny checkbox works.",
-    "The entire row should be clickable to select it, but you have to click the small checkbox precisely.",
+    "The checkboxes only register clicks if you hit the exact center. Clicking slightly off-center does nothing.",
+    "The checkboxes seem broken or unresponsive. Most clicks don't register because the hit area is tiny.",
+    "Clicking the checkboxes often doesn't work. You have to aim very precisely at the center of the checkbox.",
+    "The checkboxes have an extremely small clickable area. Clicks near the edge of the checkbox are ignored.",
+    "The selection checkboxes are frustrating to use because only clicks in the dead center actually toggle them.",
+    "The checkboxes look normal but don't respond to most clicks. The active click target is much smaller than the visible checkbox.",
+    "It's very hard to select rows because the checkboxes require pixel-perfect clicking to toggle.",
+    "The checkboxes are unreliable — sometimes they work and sometimes they don't, depending on where exactly you click.",
+    "The checkbox hit targets are too small. You have to click the exact center pixel for them to register.",
   ],
-  hint: "Try selecting rows.",
+  hint: "Try selecting several rows quickly.",
   wrongAnswers: [
     "There is no way to deselect items or clear the selection.",
     "The confirmation dialog is missing or unclear.",

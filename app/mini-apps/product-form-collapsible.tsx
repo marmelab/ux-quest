@@ -462,7 +462,7 @@ export const productFormCollapsible: MiniAppDefinition = {
   name: "Product Edit Form",
   introduction: "A product editing form with collapsible sections.",
   category: "forms",
-  difficulty: "medium",
+  difficulty: "hard",
   component: ProductFormCollapsible,
   expectedAnswers: [
     "Validation errors inside collapsed sections are hidden from the user.",
