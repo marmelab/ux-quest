@@ -11,6 +11,7 @@ import { bookstoreAdmin } from "./bookstore-admin"
 import { salesChart } from "./sales-chart"
 import { contactSheet } from "./contact-sheet"
 import { productCatalogDetail } from "./product-catalog-detail"
+import { loginFormLumen } from "./login-form-lumen"
 import { loginFormPulse } from "./login-form-pulse"
 import { breadcrumbNav } from "./help-center-admin"
 import { meetupEvent } from "./meetup-event"
@@ -23,6 +24,7 @@ export const miniApps: MiniAppDefinition[] = [
   contactTableEdit,
   editableProfile,
   loginForm,
+  loginFormLumen,
   loginFormPulse,
   meetupEvent,
   monitoringDashboard,
