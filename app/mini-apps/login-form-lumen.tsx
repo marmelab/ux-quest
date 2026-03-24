@@ -213,6 +213,7 @@ export const loginFormLumen: MiniAppDefinition = {
   expectedAnswers: [
     "Pasting is disabled in the email and password fields, forcing users to type credentials manually.",
     "You cannot paste into the login form inputs, which prevents using a password manager.",
+    "The copy/paste functionality is disabled.",
     "The form blocks paste on the email and password inputs, making it harder to use saved credentials.",
     "Paste is blocked in the email and password fields, which is frustrating for users who copy credentials from a password manager.",
     "The input fields prevent pasting, so users cannot paste their email or password from the clipboard.",

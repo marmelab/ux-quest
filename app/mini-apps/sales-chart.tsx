@@ -237,6 +237,7 @@ export const salesChart: MiniAppDefinition = {
     "When hovering on December data points, the tooltip is cropped by the chart boundary.",
     "The chart container hides part of the tooltip when it would extend beyond the chart area.",
     "The info modal can go out of the screen bounds.",
+    "For data points near the right edge, the metrics legend is no longer visible",
   ],
   hint: "Hover over data points.",
   wrongAnswers: [
