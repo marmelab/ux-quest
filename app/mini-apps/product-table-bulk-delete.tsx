@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Button } from "~/components/ui/button"
 import {
   Dialog,
@@ -138,6 +138,13 @@ function TinyCheckbox({
 function ProductTableBulkDelete() {
   const [products, setProducts] = useState(initialProducts)
   const [selected, setSelected] = useState<Set<number>>(new Set())
+  const [toast, setToast] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (!toast) return
+    const t = setTimeout(() => setToast(null), 3000)
+    return () => clearTimeout(t)
+  }, [toast])
 
   function toggleRow(id: number) {
     setSelected((prev) => {
@@ -160,8 +167,12 @@ function ProductTableBulkDelete() {
   }
 
   function handleDelete() {
+    const count = selected.size
     setProducts((prev) => prev.filter((p) => !selected.has(p.id)))
     setSelected(new Set())
+    setToast(
+      `${count} ${count === 1 ? "product" : "products"} deleted successfully.`,
+    )
   }
 
   const allSelected = products.length > 0 && selected.size === products.length
@@ -277,6 +288,12 @@ function ProductTableBulkDelete() {
           Reset products
         </Button>
       )}
+
+      {toast && (
+        <div className="fixed bottom-4 left-1/2 -translate-x-1/2 rounded-md bg-emerald-600 px-4 py-2 text-sm text-white shadow-lg">
+          {toast}
+        </div>
+      )}
     </div>
   )
 }
@@ -285,7 +302,7 @@ export const productTableBulkDelete: MiniAppDefinition = {
   id: "product-table-bulk-delete",
   name: "Product Bulk Actions",
   introduction:
-    "A product inventory table with checkboxes for selecting rows and performing bulk actions.",
+    "A product inventory table with the ability to perform bulk actions.",
   category: "lists",
   difficulty: "medium",
   component: ProductTableBulkDelete,
