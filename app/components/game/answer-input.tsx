@@ -79,6 +79,7 @@ export function AnswerInput({
       </label>
       <Textarea
         ref={textareaRef}
+        className="bg-background"
         value={text}
         onChange={(e) => setText(e.target.value)}
         onKeyDown={(e) => {

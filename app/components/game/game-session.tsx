@@ -101,7 +101,7 @@ export function GameSession() {
             <MiniAppPlayer miniApp={currentMiniApp} />
           </div>
 
-          <div className="sticky top-6 w-80 shrink-0 rounded-lg border bg-card p-4">
+          <div className="sticky top-6 w-80 shrink-0 rounded-lg border border-sky-600 bg-sky-50 p-4 dark:border-zinc-600">
             {isReviewing && lastResult ? (
               <AnswerFeedback
                 attempts={lastResult.attempts}
@@ -116,6 +116,7 @@ export function GameSession() {
               />
             ) : (
               <AnswerInput
+                key={state.currentIndex}
                 onSubmit={handleSubmit}
                 onSkip={skipQuestion}
                 attemptsUsed={state.currentAttempts.length}
