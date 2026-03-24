@@ -196,6 +196,7 @@ export const notificationSettings: MiniAppDefinition = {
     "The toggle controls have identical styling for both states — the only visual cue is the knob position.",
     "It's difficult to distinguish enabled from disabled toggles because they share the same gray color.",
     "The toggles lack a distinct active color, making the on/off state ambiguous at a glance.",
+    "Impossible to determine which buttons are active or inactive",
   ],
   hint: "Look closely at the toggle switches.",
   wrongAnswers: [

@@ -157,7 +157,7 @@ export const contactSheet: MiniAppDefinition = {
   name: "Contact Sheet",
   introduction: "A detailed contact information sheet.",
   category: "layout",
-  difficulty: "easy",
+  difficulty: "medium",
   component: ContactSheet,
   expectedAnswers: [
     "There are too many different font sizes, making the layout feel inconsistent.",

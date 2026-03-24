@@ -13,6 +13,7 @@ import { contactSheet } from "./contact-sheet"
 import { productCatalogDetail } from "./product-catalog-detail"
 import { loginFormPulse } from "./login-form-pulse"
 import { breadcrumbNav } from "./help-center-admin"
+import { meetupEvent } from "./meetup-event"
 import { notificationSettings } from "./notification-settings"
 
 export const miniApps: MiniAppDefinition[] = [
@@ -23,6 +24,7 @@ export const miniApps: MiniAppDefinition[] = [
   editableProfile,
   loginForm,
   loginFormPulse,
+  meetupEvent,
   monitoringDashboard,
   notificationSettings,
   productCatalogDetail,
