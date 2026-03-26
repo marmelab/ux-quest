@@ -219,6 +219,12 @@ export const loginFormLumen: MiniAppDefinition = {
     "The input fields prevent pasting, so users cannot paste their email or password from the clipboard.",
     "Clipboard paste is disabled on the form fields, breaking the expected paste workflow.",
     "The login form disables pasting, which hurts usability and discourages password manager usage.",
+    "Can't paste my password from my password manager.",
+    "Ctrl+V doesn't work in the input fields.",
+    "The form prevents pasting, which breaks password manager workflows.",
+    "Right-click paste and keyboard paste are both blocked on the fields.",
+    "I tried to paste my credentials but the fields won't accept pasted text.",
+    "Paste is disabled — really annoying for users with long passwords stored in a manager.",
   ],
   hint: "Try pasting the login and password into the form fields.",
   wrongAnswers: [

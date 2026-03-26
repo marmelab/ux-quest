@@ -364,7 +364,12 @@ export const loginFormPulse: MiniAppDefinition = {
     "The tab order puts the forgot password link before the submit button, so pressing enter after tabbing past the password triggers a navigation instead of login.",
     "Keyboard users who tab from password and press enter accidentally go to the forgot password page instead of logging in.",
     "The forgot password link breaks the natural keyboard flow from password to the submit button.",
-    "Tab index is not set on the forgot password link, so it appears in the tab order between the password input and the login button, disrupting keyboard navigation.",
+    "Tabbing from the password field goes to forgot password instead of the login button.",
+    "The tab order is messed up — forgot password link is focused before the submit button.",
+    "Keyboard navigation skips the login button because the forgot password link is in the way.",
+    "Pressing Tab after typing a password doesn't go to the submit button.",
+    "If you navigate with the keyboard, you accidentally trigger forgot password instead of logging in.",
+    "The focus order between password and submit is wrong because of the forgot password link.",
   ],
   hint: "Try filling in the form using only your keyboard.",
   wrongAnswers: [

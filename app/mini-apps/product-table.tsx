@@ -346,6 +346,12 @@ export const productTable: MiniAppDefinition = {
     "When you filter the results down, you might see an empty page because the pagination wasn't reset.",
     "Sorting and filtering should bring the user back to page 1 but they don't.",
     "Searching when on another page than page 1 shows no results because search doesn't reset to page 1.",
+    "Search shows empty results if you're not on page 1.",
+    "The page number stays the same when I search, so I see nothing.",
+    "Sorting doesn't bring me back to the first page — confusing.",
+    "After filtering, I'm stuck on a page that doesn't exist anymore.",
+    "Pagination and search/sort are not synced — filtering on page 3 shows blank results.",
+    "When I type in the search box on page 2, it doesn't go back to page 1 and shows no results.",
   ],
   hint: "Start by navigating to page 2.",
   wrongAnswers: [

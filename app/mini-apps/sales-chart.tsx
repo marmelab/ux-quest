@@ -238,6 +238,12 @@ export const salesChart: MiniAppDefinition = {
     "The chart container hides part of the tooltip when it would extend beyond the chart area.",
     "The info modal can go out of the screen bounds.",
     "For data points near the right edge, the metrics legend is no longer visible",
+    "The hover tooltip gets cut off near the edges of the chart.",
+    "Hovering on data points near the border shows a truncated popup.",
+    "The chart clips the tooltips — they get hidden when they overflow the container.",
+    "I can't read the full tooltip for points at the right edge of the chart.",
+    "Tooltip content is partially hidden by overflow clipping on the chart container.",
+    "The popover with data values gets cropped when too close to the chart boundary.",
   ],
   hint: "Hover over data points.",
   wrongAnswers: [

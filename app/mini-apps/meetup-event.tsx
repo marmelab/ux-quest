@@ -71,7 +71,7 @@ function MeetupEvent() {
             <Badge
               key={tag}
               variant="secondary"
-              className="border-white/40 bg-black/30 text-white font-medium hover:bg-black/40"
+              className="border-white/40 bg-black/30 font-medium text-white hover:bg-black/40"
             >
               {tag}
             </Badge>
@@ -201,7 +201,12 @@ export const meetupEvent: MiniAppDefinition = {
     "The feedback message flashes so briefly you can barely see it",
     "The notification that confirms attendance disappears too fast",
     "The toast duration is too short for the user to read the message",
-    "When you click attend, the confirmation toast only appears for a split second",
+    "The popup goes away way too fast after clicking attend.",
+    "I can barely see the confirmation message — it flashes and disappears instantly.",
+    "The notification timeout is way too short.",
+    "Something appears briefly after clicking attend but I can't read it in time.",
+    "The attend confirmation vanishes before I can process what it says.",
+    "The feedback after clicking attend is too quick to notice.",
   ],
   hint: "Try clicking the Attend button and pay close attention to what happens right after.",
   wrongAnswers: [

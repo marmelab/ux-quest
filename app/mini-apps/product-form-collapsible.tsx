@@ -472,7 +472,12 @@ export const productFormCollapsible: MiniAppDefinition = {
     "There is no visual indicator on collapsed sections that contain errors, so the user doesn't know where to look.",
     "Errors in collapsed sections are invisible — the section header doesn't change to indicate a problem.",
     "The form shows an error count but doesn't reveal which collapsed sections contain the errors.",
-    "Submitting the form doesn't expand sections with errors, leaving the user unable to find and fix them.",
+    "Errors are hidden behind collapsed panels — I can't find what's wrong.",
+    "Submitting with errors doesn't open the sections that have problems.",
+    "I see an error count but no way to know which section contains the issue.",
+    "The form says there are errors but they're buried inside closed accordion panels.",
+    "Collapsed sections should auto-expand when they contain invalid fields, but they don't.",
+    "Can't find the validation errors because they're inside sections that stay collapsed after submit.",
   ],
   hint: "What happens when the form is submitted with errors?",
   wrongAnswers: [

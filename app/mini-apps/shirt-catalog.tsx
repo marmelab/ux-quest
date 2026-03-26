@@ -652,6 +652,12 @@ export const shirtCatalog: MiniAppDefinition = {
     "The filter state is invisible once the dropdown closes — no badge, no dot, no highlighted button, nothing.",
     "There's no way to tell filters are active without reopening the dropdown. The button looks identical whether filtered or not.",
     "Closing the filter dropdown hides all evidence that filters are applied, making a small or empty list misleading.",
+    "After filtering, there's no way to tell filters are active without reopening the dropdown.",
+    "The filter button looks the same whether filters are on or off.",
+    "No badge or chip shows which filters are currently applied.",
+    "It looks like the store has very few products when actually filters are hiding the rest.",
+    "Applied filters are invisible — the UI gives no hint that results are being narrowed.",
+    "Users won't realize they have active filters because nothing on the page indicates it.",
   ],
   hint: "Apply some filters.",
   wrongAnswers: [

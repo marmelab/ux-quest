@@ -167,6 +167,12 @@ export const contactSheet: MiniAppDefinition = {
     "There are at least four different font sizes used, which makes the card look unpolished.",
     "The name, subtitle, labels, and values each use a slightly different font size when fewer would suffice.",
     "The card uses seven distinct type sizes creating a cluttered visual hierarchy.",
+    "Text sizes are all over the place — no consistent sizing.",
+    "Every piece of text seems to be a different size for no reason.",
+    "The visual hierarchy is broken because of random font size variations.",
+    "Too many type scales used at once, it looks chaotic.",
+    "Inconsistent typography — the text sizes don't follow a clear pattern.",
+    "The font sizes seem random, there's no coherent type system.",
   ],
   hint: "Visual hierarchy and consistency are key for readability.",
   wrongAnswers: [

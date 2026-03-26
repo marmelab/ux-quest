@@ -191,6 +191,12 @@ export const editableProfile: MiniAppDefinition = {
     "The font size or style changes when you click to edit a field.",
     "The input text looks different from the display text when editing in place.",
     "The layout shifts when switching to edit mode.",
+    "Clicking a field to edit it changes the font, which looks jarring.",
+    "The text jumps around when you start editing because the font is different.",
+    "There's a visible layout shift every time you click to edit a field.",
+    "Edit mode uses a different typeface than the read-only display.",
+    "The content below shifts down when I click to edit because the input font is bigger.",
+    "The page layout is unstable — elements move when toggling edit mode.",
   ],
   hint: "Click on a field to edit it.",
   wrongAnswers: [

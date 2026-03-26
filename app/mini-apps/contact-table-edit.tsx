@@ -325,7 +325,12 @@ export const contactTableEdit: MiniAppDefinition = {
     "The dialog ignores standard dismissal patterns — clicking the overlay or pressing Escape does nothing.",
     "Users expect to close a dialog by clicking outside it or pressing Escape, but neither works here.",
     "The edit modal traps you in — the only way out is through the Cancel or Save button, not the backdrop or Escape.",
-    "Pressing Escape or clicking outside the dialog should close it, but neither action works.",
+    "Can't close the popup by clicking outside it.",
+    "Escape key doesn't dismiss the modal.",
+    "The dialog is missing standard close behaviors like clicking the overlay or pressing Escape.",
+    "You're stuck in the edit dialog unless you click Cancel or Save — no other way to dismiss it.",
+    "There's no X button, no backdrop click, and no Escape to close the modal.",
+    "The overlay behind the dialog is not clickable to close it.",
   ],
   hint: "Focus on the edit dialog",
   wrongAnswers: [

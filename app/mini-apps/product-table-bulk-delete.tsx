@@ -171,7 +171,7 @@ function ProductTableBulkDelete() {
     setProducts((prev) => prev.filter((p) => !selected.has(p.id)))
     setSelected(new Set())
     setToast(
-      `${count} ${count === 1 ? "product" : "products"} deleted successfully.`,
+      `${count} ${count === 1 ? "product" : "products"} deleted successfully.`
     )
   }
 
@@ -315,7 +315,12 @@ export const productTableBulkDelete: MiniAppDefinition = {
     "The checkboxes look normal but don't respond to most clicks. The active click target is much smaller than the visible checkbox.",
     "It's very hard to select rows because the checkboxes require pixel-perfect clicking to toggle.",
     "The checkboxes are unreliable — sometimes they work and sometimes they don't, depending on where exactly you click.",
-    "The checkbox hit targets are too small. You have to click the exact center pixel for them to register.",
+    "The checkboxes are really hard to click — they feel broken.",
+    "Most of my clicks on the checkboxes don't register.",
+    "The clickable area of the checkboxes is way too small.",
+    "Selecting rows is frustrating because the checkboxes barely respond to clicks.",
+    "The hit target on the checkboxes is tiny — I have to click perfectly in the center.",
+    "Checkboxes don't work properly, you need pixel-perfect precision to toggle them.",
   ],
   hint: "Try selecting several rows quickly.",
   wrongAnswers: [

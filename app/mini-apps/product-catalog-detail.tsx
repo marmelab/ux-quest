@@ -551,6 +551,12 @@ export const productCatalogDetail: MiniAppDefinition = {
     "Product navigation doesn't use browser history, so the back button skips the product list entirely.",
     "When you view a product detail and press the browser back button, you leave the mini-app instead of returning to the product grid.",
     "The URL doesn't change when navigating to a product detail, so browser back navigation is broken.",
+    "Pressing back in the browser exits the app instead of going to the product list.",
+    "Back button is broken — it doesn't go back to the catalog.",
+    "The browser history doesn't include the product list, so back skips it entirely.",
+    "Opening a product and hitting back takes me out of the whole app.",
+    "There's no way to go back to the list using the browser's back button.",
+    "The detail view doesn't push a history entry, so the back button behavior is wrong.",
   ],
   hint: "From a product detail page, how do you get back to the product listing?",
   wrongAnswers: [

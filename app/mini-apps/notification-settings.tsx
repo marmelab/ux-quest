@@ -197,6 +197,12 @@ export const notificationSettings: MiniAppDefinition = {
     "It's difficult to distinguish enabled from disabled toggles because they share the same gray color.",
     "The toggles lack a distinct active color, making the on/off state ambiguous at a glance.",
     "Impossible to determine which buttons are active or inactive",
+    "The toggles are the same color for on and off — can't tell the state at a glance.",
+    "On/off switches need different colors, right now they're both gray.",
+    "The switches don't visually indicate whether they're enabled or disabled.",
+    "Hard to scan which notifications are turned on because the toggles all look identical.",
+    "Toggle state is ambiguous — there's no color coding for on vs off.",
+    "The switches should turn green or blue when active, but they stay gray.",
   ],
   hint: "Look closely at the toggle switches.",
   wrongAnswers: [

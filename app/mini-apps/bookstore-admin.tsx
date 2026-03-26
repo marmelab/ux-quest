@@ -29,9 +29,7 @@ interface Toast {
   message: string
 }
 
-type Screen =
-  | { kind: "list" }
-  | { kind: "show"; bookId: number }
+type Screen = { kind: "list" } | { kind: "show"; bookId: number }
 
 // --- Mock data -----------------------------------------------------------
 
@@ -578,9 +576,7 @@ function BookstoreAdmin() {
       : undefined
 
   const title =
-    screen.kind === "list"
-      ? "Books"
-      : (currentBook?.title ?? "Book")
+    screen.kind === "list" ? "Books" : (currentBook?.title ?? "Book")
 
   return (
     <div className={`w-full ${isDark ? "dark" : ""}`}>
@@ -650,7 +646,7 @@ function BookstoreAdmin() {
               />
               <button
                 onClick={() => setCreateOpen(true)}
-                className="absolute bottom-4 right-4 flex h-14 w-14 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg active:bg-blue-700 dark:bg-indigo-500 dark:active:bg-indigo-600"
+                className="absolute right-4 bottom-4 flex h-14 w-14 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg active:bg-blue-700 dark:bg-indigo-500 dark:active:bg-indigo-600"
                 aria-label="Add new book"
               >
                 <PlusIcon size={24} />
@@ -662,14 +658,12 @@ function BookstoreAdmin() {
               book={currentBook}
               onSave={(updated) => {
                 setBooks((prev) =>
-                  prev.map((b) => (b.id === updated.id ? updated : b)),
+                  prev.map((b) => (b.id === updated.id ? updated : b))
                 )
                 showToast("Book updated successfully")
               }}
               onDelete={() => {
-                setBooks((prev) =>
-                  prev.filter((b) => b.id !== currentBook.id),
-                )
+                setBooks((prev) => prev.filter((b) => b.id !== currentBook.id))
                 showToast("Book deleted")
                 setScreen({ kind: "list" })
               }}
@@ -716,8 +710,12 @@ export const bookstoreAdmin: MiniAppDefinition = {
     "In dark mode, the notification text doesn't have enough contrast against the notification background.",
     "After saving or deleting a record in dark mode, the confirmation toast is effectively invisible because both text and background are dark grey.",
     "Dark mode notifications fail contrast accessibility requirements — the toast text is near-black on a dark grey background.",
-    "Notification messages are not visible in dark mode due to insufficient contrast between text color and background color.",
-    "The app feedback toasts are readable in light mode but invisible in dark mode because the text color is too close to the background.",
+    "Can't read the toast messages in dark mode.",
+    "The toasts have no contrast in dark theme, text blends into the background.",
+    "Switching to dark mode makes the confirmation popups unreadable.",
+    "No feedback is visible after saving or deleting when using dark mode.",
+    "Dark mode breaks toast readability — the colors are too similar.",
+    "I can't see any confirmation when I save or delete in dark mode.",
   ],
   hint: "Try switching to dark mode and performing actions.",
   wrongAnswers: [

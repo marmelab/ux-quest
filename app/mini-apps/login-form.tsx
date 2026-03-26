@@ -641,6 +641,12 @@ export const loginForm: MiniAppDefinition = {
     "The login error message appears but the form is emptied, so users lose what they typed.",
     "Both fields are reset on authentication failure instead of preserving the email address.",
     "When I enter the wrong email and password combination, the input fields clear, but they shouldn't.",
+    "Wrong password wipes the entire form — I have to re-enter my email too.",
+    "The inputs get blanked out after a failed attempt.",
+    "Failed login clears everything instead of just the password field.",
+    "I lose what I typed when the login fails — both fields get emptied.",
+    "After entering bad credentials, the form resets and I have to start over from scratch.",
+    "The form should keep my email after a wrong password but it erases both fields.",
   ],
   hint: "What happens when you enter wrong credentials?",
   wrongAnswers: [
