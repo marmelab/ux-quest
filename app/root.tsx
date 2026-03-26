@@ -22,7 +22,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         />
         <meta
           property="og:description"
-          content="A usability problem detection training game"
+          content="Spot the UX flaw! Examine mini-apps with deliberate usability problems, describe what's wrong, and get scored by an AI model."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://marmelab.com/ux-quest/" />
