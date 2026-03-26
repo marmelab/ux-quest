@@ -244,6 +244,9 @@ export const salesChart: MiniAppDefinition = {
     "I can't read the full tooltip for points at the right edge of the chart.",
     "Tooltip content is partially hidden by overflow clipping on the chart container.",
     "The popover with data values gets cropped when too close to the chart boundary.",
+    "The tooltip gets cut off at the edge.",
+    "I can't see the full hover info for some data points.",
+    "The chart clips content that goes outside its borders.",
   ],
   hint: "Hover over data points.",
   wrongAnswers: [

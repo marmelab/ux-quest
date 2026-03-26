@@ -331,6 +331,9 @@ export const contactTableEdit: MiniAppDefinition = {
     "You're stuck in the edit dialog unless you click Cancel or Save — no other way to dismiss it.",
     "There's no X button, no backdrop click, and no Escape to close the modal.",
     "The overlay behind the dialog is not clickable to close it.",
+    "The modal is hard to close.",
+    "I can't get out of the dialog easily.",
+    "The popup doesn't close the way I expect.",
   ],
   hint: "Focus on the edit dialog",
   wrongAnswers: [

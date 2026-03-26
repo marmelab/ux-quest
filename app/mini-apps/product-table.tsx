@@ -352,6 +352,9 @@ export const productTable: MiniAppDefinition = {
     "After filtering, I'm stuck on a page that doesn't exist anymore.",
     "Pagination and search/sort are not synced — filtering on page 3 shows blank results.",
     "When I type in the search box on page 2, it doesn't go back to page 1 and shows no results.",
+    "Search doesn't work when I'm not on page 1.",
+    "Pagination is broken when filtering.",
+    "The table shows empty after I search from page 2.",
   ],
   hint: "Start by navigating to page 2.",
   wrongAnswers: [

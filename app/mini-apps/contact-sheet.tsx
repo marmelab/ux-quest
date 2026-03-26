@@ -173,6 +173,9 @@ export const contactSheet: MiniAppDefinition = {
     "Too many type scales used at once, it looks chaotic.",
     "Inconsistent typography — the text sizes don't follow a clear pattern.",
     "The font sizes seem random, there's no coherent type system.",
+    "The text styling is inconsistent.",
+    "The card looks messy because of the typography.",
+    "Too many different text sizes on one card.",
   ],
   hint: "Visual hierarchy and consistency are key for readability.",
   wrongAnswers: [

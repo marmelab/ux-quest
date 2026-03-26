@@ -478,6 +478,9 @@ export const productFormCollapsible: MiniAppDefinition = {
     "The form says there are errors but they're buried inside closed accordion panels.",
     "Collapsed sections should auto-expand when they contain invalid fields, but they don't.",
     "Can't find the validation errors because they're inside sections that stay collapsed after submit.",
+    "I can't see where the errors are after submitting.",
+    "The form says there are errors but I can't find them.",
+    "Error messages are hidden inside collapsed sections.",
   ],
   hint: "What happens when the form is submitted with errors?",
   wrongAnswers: [

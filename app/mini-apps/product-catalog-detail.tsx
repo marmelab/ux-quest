@@ -557,6 +557,9 @@ export const productCatalogDetail: MiniAppDefinition = {
     "Opening a product and hitting back takes me out of the whole app.",
     "There's no way to go back to the list using the browser's back button.",
     "The detail view doesn't push a history entry, so the back button behavior is wrong.",
+    "The back button doesn't work correctly.",
+    "Browser navigation is broken in this app.",
+    "Going back takes me out of the app instead of to the previous page.",
   ],
   hint: "From a product detail page, how do you get back to the product listing?",
   wrongAnswers: [

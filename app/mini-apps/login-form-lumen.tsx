@@ -225,6 +225,9 @@ export const loginFormLumen: MiniAppDefinition = {
     "Right-click paste and keyboard paste are both blocked on the fields.",
     "I tried to paste my credentials but the fields won't accept pasted text.",
     "Paste is disabled — really annoying for users with long passwords stored in a manager.",
+    "I can't use my password manager with this form.",
+    "Paste doesn't work on the inputs.",
+    "The form blocks clipboard operations.",
   ],
   hint: "Try pasting the login and password into the form fields.",
   wrongAnswers: [

@@ -197,6 +197,9 @@ export const editableProfile: MiniAppDefinition = {
     "Edit mode uses a different typeface than the read-only display.",
     "The content below shifts down when I click to edit because the input font is bigger.",
     "The page layout is unstable — elements move when toggling edit mode.",
+    "Things move around when I click to edit.",
+    "The text looks different in edit mode.",
+    "There's a visual glitch when switching between view and edit.",
   ],
   hint: "Click on a field to edit it.",
   wrongAnswers: [

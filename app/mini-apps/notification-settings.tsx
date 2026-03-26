@@ -203,6 +203,9 @@ export const notificationSettings: MiniAppDefinition = {
     "Hard to scan which notifications are turned on because the toggles all look identical.",
     "Toggle state is ambiguous — there's no color coding for on vs off.",
     "The switches should turn green or blue when active, but they stay gray.",
+    "I can't tell which toggles are on or off.",
+    "The switches all look the same regardless of state.",
+    "The on/off state of the toggles is unclear.",
   ],
   hint: "Look closely at the toggle switches.",
   wrongAnswers: [

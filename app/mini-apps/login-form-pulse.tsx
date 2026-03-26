@@ -370,6 +370,9 @@ export const loginFormPulse: MiniAppDefinition = {
     "Pressing Tab after typing a password doesn't go to the submit button.",
     "If you navigate with the keyboard, you accidentally trigger forgot password instead of logging in.",
     "The focus order between password and submit is wrong because of the forgot password link.",
+    "The tab order is wrong on this form.",
+    "Keyboard navigation is broken — I end up on forgot password instead of login.",
+    "Pressing Tab doesn't go where I expect after the password field.",
   ],
   hint: "Try filling in the form using only your keyboard.",
   wrongAnswers: [

@@ -321,6 +321,9 @@ export const productTableBulkDelete: MiniAppDefinition = {
     "Selecting rows is frustrating because the checkboxes barely respond to clicks.",
     "The hit target on the checkboxes is tiny — I have to click perfectly in the center.",
     "Checkboxes don't work properly, you need pixel-perfect precision to toggle them.",
+    "The checkboxes are broken.",
+    "I can't select rows reliably.",
+    "Clicking on a checkbox doesn't always work.",
   ],
   hint: "Try selecting several rows quickly.",
   wrongAnswers: [

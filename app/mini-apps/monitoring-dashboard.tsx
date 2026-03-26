@@ -588,6 +588,9 @@ export const monitoringDashboard: MiniAppDefinition = {
     "The metric names and units need more contrast — only the big values are legible.",
     "Some text on the cards is almost impossible to read because it's dark gray on a dark background.",
     "Hard to read the supporting info on each metric card.",
+    "Some text is too hard to read on the dark background.",
+    "The small labels have bad contrast.",
+    "Parts of the dashboard are barely legible.",
   ],
   hint: "Each metric has a label, value, and unit.",
   wrongAnswers: [

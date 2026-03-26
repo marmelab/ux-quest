@@ -352,6 +352,9 @@ export const breadcrumbNav: MiniAppDefinition = {
     "Breadcrumb items are all identical visually — which ones are links?",
     "There's no affordance on the breadcrumb to show what's clickable vs. what's the current page.",
     "The breadcrumb doesn't show where I am — everything looks like a link.",
+    "The breadcrumbs are confusing — I can't tell where I am.",
+    "The navigation path at the top doesn't highlight the current page.",
+    "All the breadcrumb items look clickable even though one shouldn't be.",
   ],
   hint: "Look at the breadcrumb navigation.",
   wrongAnswers: [

@@ -647,6 +647,9 @@ export const loginForm: MiniAppDefinition = {
     "I lose what I typed when the login fails — both fields get emptied.",
     "After entering bad credentials, the form resets and I have to start over from scratch.",
     "The form should keep my email after a wrong password but it erases both fields.",
+    "The form resets when login fails.",
+    "I have to retype everything after a wrong password.",
+    "My input gets wiped when credentials are incorrect.",
   ],
   hint: "What happens when you enter wrong credentials?",
   wrongAnswers: [

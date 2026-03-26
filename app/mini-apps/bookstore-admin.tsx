@@ -716,6 +716,9 @@ export const bookstoreAdmin: MiniAppDefinition = {
     "No feedback is visible after saving or deleting when using dark mode.",
     "Dark mode breaks toast readability — the colors are too similar.",
     "I can't see any confirmation when I save or delete in dark mode.",
+    "The dark theme has a contrast problem.",
+    "Notifications are broken in dark mode.",
+    "I don't get any feedback when I perform actions in dark mode.",
   ],
   hint: "Try switching to dark mode and performing actions.",
   wrongAnswers: [

@@ -207,6 +207,9 @@ export const meetupEvent: MiniAppDefinition = {
     "Something appears briefly after clicking attend but I can't read it in time.",
     "The attend confirmation vanishes before I can process what it says.",
     "The feedback after clicking attend is too quick to notice.",
+    "The notification disappears too fast.",
+    "I saw something flash but couldn't read it.",
+    "There's a message after clicking attend but it's gone instantly.",
   ],
   hint: "Try clicking the Attend button and pay close attention to what happens right after.",
   wrongAnswers: [

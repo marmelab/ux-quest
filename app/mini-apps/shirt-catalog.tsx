@@ -658,6 +658,9 @@ export const shirtCatalog: MiniAppDefinition = {
     "It looks like the store has very few products when actually filters are hiding the rest.",
     "Applied filters are invisible — the UI gives no hint that results are being narrowed.",
     "Users won't realize they have active filters because nothing on the page indicates it.",
+    "There's no indicator that filters are active.",
+    "After filtering I can't tell the results are filtered.",
+    "The filter state is hidden once I close the dropdown.",
   ],
   hint: "Apply some filters.",
   wrongAnswers: [
