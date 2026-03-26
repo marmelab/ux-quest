@@ -2,7 +2,18 @@ import { Github } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="py-4 text-center text-sm text-muted-foreground">
+    <footer className="flex items-center justify-center gap-2 py-4 text-center text-sm text-muted-foreground">
+      <a
+        href="https://marmelab.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="transition-colors hover:text-foreground"
+      >
+        Made by marmelab
+      </a>
+      <span>·</span>
+      <span>MIT License</span>
+      <span>·</span>
       <a
         href="https://github.com/marmelab/ux-quest"
         target="_blank"
