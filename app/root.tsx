@@ -16,6 +16,25 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:title" content="UX Quest" />
+        <meta
+          property="og:description"
+          content="A usability problem detection training game"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://marmelab.com/ux-quest/" />
+        <meta
+          property="og:image"
+          content="https://marmelab.com/ux-quest/og-image.png"
+        />
+        <meta
+          property="og:image:secure_url"
+          content="https://marmelab.com/ux-quest/og-image.png"
+        />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:alt" content="UX Quest" />
         <Meta />
         <Links />
       </head>
