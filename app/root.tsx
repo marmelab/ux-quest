@@ -23,6 +23,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <div className="flex flex-1 flex-col">{children}</div>
         <ScrollRestoration />
         <Scripts />
+        <script
+          defer
+          src="https://gursikso.marmelab.com/script.js"
+          data-website-id="ec47274a-7636-4b10-928b-e7cf26282344"
+        ></script>
       </body>
     </html>
   )
